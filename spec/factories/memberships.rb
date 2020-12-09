@@ -16,5 +16,6 @@ FactoryBot.define do
     marital_status { "Single" }
     work_place { "Paystack" }
     year_joining_church { 2016 }
+    position{"Member"}
   end
 end

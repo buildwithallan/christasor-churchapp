@@ -4,7 +4,7 @@ RSpec.describe "Memberships", type: :request do
 
   describe "GET /index" do
     it "returns all members" do
-      get "/memberships", params: {}
+      get "/memberships"
       expect(response).to have_http_status(:success)
     end
   end

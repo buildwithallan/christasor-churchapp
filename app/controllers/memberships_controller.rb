@@ -21,6 +21,17 @@ class MembershipsController < ApplicationController
   end
 
   def edit
+  	@membership = Membership.find(params[:id])
+  end
+
+  def update
+  	@membership = Membership.find(params[:id])
+
+  	if @membership.update(membership_params)
+  	 redirect_to @membership
+  	 else
+  	 render :edit	
+  	end
   end
 
   def destroy
@@ -33,6 +44,6 @@ class MembershipsController < ApplicationController
   private
 
   def membership_params
-  	params.require(:membership).permit(:image, :member_id, :firstname, :lastname, :othernames, :title, :gender, :date_of_birth, :primary_phone_number, :other_phone_number, :email, :hometown, :residential_location, :occupation, :marital_status, :work_place, :year_joining_church )	
+  	params.require(:membership).permit(:image, :member_id, :firstname, :lastname, :othernames, :title, :position, :gender, :date_of_birth, :primary_phone_number, :other_phone_number, :email, :hometown, :residential_location, :occupation, :marital_status, :work_place, :year_joining_church )	
   end
 end
