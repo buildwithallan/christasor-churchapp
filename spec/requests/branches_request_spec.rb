@@ -19,7 +19,7 @@ RSpec.describe "Branches", type: :request do
   describe "GET /edit" do
     let(:branch){create(:branch)}
 
-    it "returns http success" do
+    it "updates a branch" do
       get edit_branch_path(branch), params: {id: branch.id}
       expect(response).to have_http_status(:success)
     end

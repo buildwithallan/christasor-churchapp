@@ -19,7 +19,7 @@ RSpec.describe "Memberships", type: :request do
   describe "GET /show" do
     let(:membership){create(:membership)}
 
-    it "returns http success" do
+    it "shows a member" do
       get membership_path(membership), params: {id: membership.id}
       expect(response).to have_http_status(:success)
     end

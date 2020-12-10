@@ -1,12 +1,12 @@
 FactoryBot.define do
   factory :branch do
-    country { "MyString" }
-    district { "MyString" }
-    location { "MyString" }
-    branchname { "MyString" }
-    leaders_name { "MyString" }
-    contact1 { 1 }
-    contact2 { 1 }
-    contact3 { 1 }
+    country { "Ghana" }
+    district { "Gt. Accra" }
+    location { "Achimota" }
+    branchname { "KrimAchimota" }
+    leaders_name { "Allan Aikins" }
+    contact1 { 578034667 }
+    contact2 { 0 }
+    contact3 { 0 }
   end
 end
