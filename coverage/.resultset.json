@@ -239,6 +239,15 @@
           null
         ]
       },
+      "C:/Users/owusu-lib/Desktop/churchapp/spec/factories/departments.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
       "C:/Users/owusu-lib/Desktop/churchapp/spec/factories/memberships.rb": {
         "lines": [
           1,
@@ -269,10 +278,11 @@
           1,
           1,
           1,
+          1,
           null
         ]
       }
     },
-    "timestamp": 1607539238
+    "timestamp": 1607714431
   }
 }
