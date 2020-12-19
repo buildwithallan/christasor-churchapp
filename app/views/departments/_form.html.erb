@@ -1,0 +1,11 @@
+<div>
+  <%= form_for @department do |f| %>
+    <div>
+       <%= f.label :department %>
+       <%= f.text_field :name %>
+    </div>
+    <div>
+       <%= f.submit "Create a Department" %>
+    </div>
+  <% end %>	
+</div>

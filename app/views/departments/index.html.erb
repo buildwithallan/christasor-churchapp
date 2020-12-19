@@ -1,2 +1,18 @@
-<h1>Departments#index</h1>
-<p>Find me in app/views/departments/index.html.erb</p>
+<table>
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>Department</th>
+		</tr>
+	</thead>
+	<tbody>
+	  <% @departments.each do |department| %>
+		<tr>
+			<td><%= department.id %></td>
+			<td><%= department.name %></td>
+		</tr>
+	</tbody>
+	<% end %>
+</table>
+
+

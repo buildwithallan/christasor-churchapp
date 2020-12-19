@@ -1,2 +1,28 @@
-<h1>Branches#index</h1>
-<p>Find me in app/views/branches/index.html.erb</p>
+<table>
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Country</th>
+			<th>District</th>
+			<th>Location</th>
+			<th>Branch Name</th>
+			<th>Leader's Name</th>
+			<th>Contact</th>
+		</tr>
+	</thead>
+	<tbody>
+	  <% @branches.each do |branch| %>
+		<tr>
+			<td><%= branch.id %></td>
+			<td><%= branch.country %></td>
+			<td><%= branch.district %></td>
+			<td><%= branch.location %></td>
+			<td><%= branch.branchname %></td>
+			<td><%= branch.leaders_name %></td>
+			<td><%= branch.contact1 %> / <%= branch.contact1 %> / <%= branch.contact1 %></td>
+		</tr>
+	</tbody>
+	<% end %>
+</table>
+
+

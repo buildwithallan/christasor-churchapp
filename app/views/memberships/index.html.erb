@@ -1,2 +1,28 @@
-<h1>Memberships#index</h1>
-<p>Find me in app/views/memberships/index.html.erb</p>
+<table>
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Pic</th>
+			<th>Name</th>
+			<th>Membership No.</th>
+			<th>Position</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @memberships.each do |membership| %>
+		<tr>
+			<td><%= membership.id %></td>
+			<td><%= image_tag(membership.image, :size => '60x60') if membership.image.attached? %></td>
+			<td><%= membership.firstname %> <%= membership.lastname %></td>
+			<td><%= membership.member_id %></td>
+			<td><%= membership.position%></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+
+  
+  
+  
+  

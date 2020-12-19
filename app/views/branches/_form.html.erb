@@ -1,0 +1,41 @@
+<div>
+  <%= form_for @branch do |f| %>
+  <div>
+  	<%= f.label :country %>
+  	<%= f.text_field :country %>
+  </div>
+  <div>
+  	<%= f.label :district %>
+  	<%= f.text_field :district %>
+  </div>
+  <div>
+  	<%= f.label :location %>
+  	<%= f.text_field :location %>
+  </div>
+  <div>
+  	<%= f.label :branch_name %>
+  	<%= f.text_field :branchname %>
+  </div>
+  <div>
+  	<%= f.label :leaders_name %>
+  	<%= f.text_field :leaders_name %>
+  </div>
+  <div>
+  	<%= f.label :contact1 %>
+  	<%= f.telephone_field :contact1 %>
+  </div>
+  <div>
+  	<%= f.label :contact2 %>
+  	<%= f.telephone_field :contact2 %>
+  </div>
+  <div>
+  	<%= f.label :contact3 %>
+  	<%= f.telephone_field :contact3 %>
+  </div>
+  <div>
+  	<%= f.submit "Create a branch" %>
+  </div>
+  <% end %>
+</div>
+
+

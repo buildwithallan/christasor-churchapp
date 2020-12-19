@@ -6,7 +6,6 @@ RSpec.describe Membership, type: :model do
   	it {is_expected.to validate_presence_of :firstname}
   	it {is_expected.to validate_presence_of :lastname}
   	it {is_expected.to validate_presence_of :gender}
-  	it {is_expected.to validate_presence_of :primary_phone_number}
   	it {is_expected.to validate_presence_of :title}
   end
 end

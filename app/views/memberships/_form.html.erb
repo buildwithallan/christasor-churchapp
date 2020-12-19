@@ -1,0 +1,79 @@
+<div>
+  <%= form_for @membership do |f| %>
+	<div>
+	  <%= f.label :image %>
+	  <%= f.file_field :image %>	
+	</div>
+	<div>
+	  <%= f.label :member_Id %>
+	  <%= f.text_field :member_id %>	
+	</div>
+	<div>
+	  <%= f.label :title %>
+	  <%= f.select :title, options_for_select(['Mr.', 'Mrs', 'Ms']), {:include_blank => ''} %>
+	</div>
+	<div> 
+	  <%= f.label :firstname %>
+	  <%= f.text_field :firstname %>
+	</div>
+	<div>
+	  <%= f.label :lastname %>
+	  <%= f.text_field :lastname %>
+	</div>
+	<div> 
+	  <%= f.label :othernames %>
+	  <%= f.text_field :othernames %>	
+	</div>
+	<div>  
+	  <%= f.label :gender %>
+	  <%= f.select :gender, options_for_select(['Male', 'Female']), {:include_blank => ''} %>
+	</div>
+	<div>
+	  <%= f.label :date_of_birth %>
+	  <%= f.date_field :date_of_birth %>
+	</div>
+	<div>	
+	  <%= f.label :primary_phone_number %>
+	  <%= f.telephone_field :primary_phone_number %>
+	</div>
+	<div>
+	  <%= f.label :other_phone_number %>
+	  <%= f.telephone_field :other_phone_number %>	
+	</div>
+	<div>
+	  <%= f.label :email %>
+	  <%= f.email_field :email %>	
+	</div>
+	<div>
+	  <%= f.label :hometown %>
+	  <%= f.text_field :hometown %>
+	</div>
+	<div>
+	  <%= f.label :residential_location %>
+	  <%= f.text_area :residential_location %>	
+	</div>
+	<div>
+	  <%= f.label :occupation %>
+	  <%= f.text_field :occupation %>	
+	</div>
+	<div>
+	  <%= f.label :marital_status %>
+	  <%= f.select :marital_status, options_for_select(['Single', 'Married']), {:include_blank => ''} %>	
+	</div>
+	<div>
+	  <%= f.label :place_of_work %>
+	  <%= f.text_field :work_place %>	
+	</div>
+	<div>
+	  <%= f.label :Member_position %>
+	  <%= f.text_field :position %>
+	</div>
+	<div>
+	  <%= f.label :year_joining_church %>
+	  <%= f.text_field :year_joining_church %>	
+	</div>
+	<div>
+	 <%= f.submit "Create Member" %>	
+	</div>
+  <% end %>
+</div>
