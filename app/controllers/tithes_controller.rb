@@ -1,5 +1,12 @@
 class TithesController < ApplicationController
   def index
+  	@tithes = Tithe.all
+  end
+
+  def show
+  end
+
+  def edit
   end
 
   def new
@@ -10,7 +17,7 @@ class TithesController < ApplicationController
   	@tithe = Tithe.create(tithe_params)
 
   	if @tithe.save
-  	 redirect_to :action => :index
+  		redirect_to :action => :index
   	else
   		render :new
   	end
@@ -19,6 +26,6 @@ class TithesController < ApplicationController
   private
 
   def tithe_params
-  	params.require(:tithe).permit(:amount)
+  	params.require(:tithe).permit(:membership_id, :amount)
   end
 end

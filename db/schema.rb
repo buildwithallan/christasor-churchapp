@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_19_020041) do
+ActiveRecord::Schema.define(version: 2021_01_02_134230) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -81,10 +81,13 @@ ActiveRecord::Schema.define(version: 2020_12_19_020041) do
   end
 
   create_table "tithes", force: :cascade do |t|
-    t.integer "amount"
+    t.integer "membership_id", null: false
+    t.decimal "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["membership_id"], name: "index_tithes_on_membership_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "tithes", "memberships"
 end

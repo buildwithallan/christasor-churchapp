@@ -1,0 +1,8 @@
+<%= form_for @tithe do |f| %>
+	<%= f.label :Membership_id %>
+	<%= f.select :membership_id, options_for_select(Membership.all.map{|c| [c.member_id, c.id]}),{:include_blank => :true}, {id: 'dropdown-choice-select'}%>
+	<%= f.label :Amount %>
+	<%= f.text_field :amount %>
+
+	<%= f.submit "Create Tithe" %>
+<% end %>

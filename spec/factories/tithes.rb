@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :tithe do
-    amount { 100 }
+    membership { "KRIM0001" }
+    amount { "9.99" }
   end
 end

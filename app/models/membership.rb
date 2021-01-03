@@ -5,4 +5,7 @@ class Membership < ApplicationRecord
 	validates :title, presence: true
 
 	has_one_attached :image
+
+	has_many :tithes
+
 end

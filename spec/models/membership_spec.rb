@@ -8,4 +8,8 @@ RSpec.describe Membership, type: :model do
   	it {is_expected.to validate_presence_of :gender}
   	it {is_expected.to validate_presence_of :title}
   end
+
+  describe "associations" do
+  	it {is_expected.to have_many(:tithes)}
+  end
 end
