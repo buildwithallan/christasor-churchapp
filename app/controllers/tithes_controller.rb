@@ -3,12 +3,6 @@ class TithesController < ApplicationController
   	@tithes = Tithe.all
   end
 
-  def show
-  end
-
-  def edit
-  end
-
   def new
   	@tithe = Tithe.new
   end
