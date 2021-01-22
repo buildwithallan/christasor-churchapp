@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_18_102342) do
+ActiveRecord::Schema.define(version: 2021_01_20_234417) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -58,6 +58,14 @@ ActiveRecord::Schema.define(version: 2021_01_18_102342) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "member_groups", force: :cascade do |t|
+    t.string "fullname"
+    t.integer "group_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["group_id"], name: "index_member_groups_on_group_id"
+  end
+
   create_table "memberships", force: :cascade do |t|
     t.string "member_id"
     t.string "title"
@@ -101,5 +109,6 @@ ActiveRecord::Schema.define(version: 2021_01_18_102342) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "member_groups", "groups"
   add_foreign_key "tithes", "memberships"
 end

@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "Memberships", type: :request do
 
+  before (:each) do 
+
   describe "GET /index" do
     it "will get all members created" do
       get "/memberships"

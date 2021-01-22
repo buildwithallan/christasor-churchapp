@@ -1,0 +1,21 @@
+<table>
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Group</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @member_groups.each do |membergroup| %>
+
+		<tr>
+			<td><%= membergroup.id %></td>
+			<td><%= membergroup.fullname %></td>
+			<td><%= membergroup.group.group_name %></td>
+		</tr>
+
+        <% end %>
+	</tbody>
+</table>
+
