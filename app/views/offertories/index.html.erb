@@ -1,0 +1,23 @@
+<table>
+	<thead>
+		<tr>
+		   <th>Id</th>
+		   <th>Amount</th>
+		   <th>Description</th>
+		   <th>Date</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @offertories.each do |offertory| %>
+		  <tr>
+		  	<td><%= offertory.id %></td>
+			<td>GHc <%= offertory.amount %></td>
+			<td><%= offertory.description %></td>
+			<td><%= offertory.created_at%></td>
+		  </tr>
+		<% end %>
+	</tbody>
+</table>
+
+
+
