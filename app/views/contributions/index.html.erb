@@ -1,0 +1,25 @@
+<table>
+	<thead>
+		<tr>
+		   <th>Id</th>
+		   <th>Name</th>
+		   <th>Amount</th>
+		   <th>Purpose</th>
+		   <th>Date</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @contributions.each do |contribution| %>
+		  <tr>
+		  	<td><%= contribution.id %></td>
+			<td><%= contribution.name %></td>
+			<td>GHc <%= contribution.amount %></td>
+			<td><%= contribution.purpose %></td>
+			<td><%= contribution.created_at%></td>
+		  </tr>
+		<% end %>
+	</tbody>
+</table>
+
+
+

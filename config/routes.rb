@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
- 
+
   devise_for :users
   get 'dashboard/index'
   root 'dashboard#index'
@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   resources :departments
   resources :memberships
   resources :branches
+  resources :contributions
   
 end

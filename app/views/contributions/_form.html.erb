@@ -1,0 +1,11 @@
+<%= form_for @contribution do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+	<%= f.label :amount %>
+	<%= f.text_field :amount %>
+	<%= f.label :purpose %>
+	<%= f.text_field :purpose %>
+
+	<%= f.submit "Submit" %>
+<% end %>
+
