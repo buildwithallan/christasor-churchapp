@@ -2,6 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "Branches", type: :request do
 
+   before do
+    user = FactoryBot.create(:user)
+    sign_in user
+   end
+
   describe "GET /index" do
     it "will get all branches created" do
       get "/branches"
@@ -36,3 +41,4 @@ RSpec.describe "Branches", type: :request do
   end
 
 end
+

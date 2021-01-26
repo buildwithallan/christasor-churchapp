@@ -2,6 +2,12 @@ require 'rails_helper'
 
 RSpec.describe "Departments", type: :request do
 
+
+   before do
+    user = FactoryBot.create(:user)
+    sign_in user
+   end
+
   describe "GET /index" do
     it "will get all departments created" do
       get "/departments"
@@ -43,7 +49,5 @@ RSpec.describe "Departments", type: :request do
       expect(response).to redirect_to(:action => :index)
     end
   end
-
-
-
 end
+
