@@ -1,0 +1,23 @@
+<table>
+	<thead>
+		<tr>
+		   <th>Id</th>
+		   <th>Purpose</th>
+		   <th>Amount</th>
+		   <th>Date</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @expenses.each do |expense| %>
+		  <tr>
+		  	<td><%= expense.id %></td>
+		  	<td><%= expense.purpose %></td>
+			<td>GHc <%= expense.amount %></td>			
+			<td><%= expense.expense_date%></td>
+		  </tr>
+		<% end %>
+	</tbody>
+</table>
+
+
+

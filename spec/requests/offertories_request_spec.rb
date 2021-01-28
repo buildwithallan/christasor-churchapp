@@ -8,8 +8,8 @@ RSpec.describe "Offertories", type: :request do
    end
 
   describe "GET /index" do
-    it "returns http success" do
-      get "/offertories/index"
+    it "displays all offertories created" do
+      get "/offertories"
       expect(response).to have_http_status(:success)
     end
   end

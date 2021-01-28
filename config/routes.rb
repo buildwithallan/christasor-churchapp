@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
   
-  get 'offertories/index'
-  get 'offertories/new'
   devise_for :users
   get 'dashboard/index'
   root 'dashboard#index'
@@ -15,5 +13,6 @@ Rails.application.routes.draw do
   resources :branches
   resources :contributions
   resources :offertories
+  resources :expenses
   
 end

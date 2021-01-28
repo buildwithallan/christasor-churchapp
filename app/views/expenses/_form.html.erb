@@ -1,0 +1,10 @@
+<%= form_for @expense do |f| %>
+	<%= f.label :purpose %>
+	<%= f.text_field :purpose %>
+	<%= f.label :amount %>
+	<%= f.text_field :amount %>
+	<%= f.label :date, "Date" %>
+	<%= f.date_field :expense_date %>
+
+	<%= f.submit "Submit" %>
+<% end %>
