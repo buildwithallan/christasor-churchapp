@@ -20,6 +20,14 @@
 		</tr>
 		<% end %>
 	</tbody>
+	<tfoot>
+		<tr>
+			<th></th>
+			<th></th>
+			<th>Total = </th>
+			<th>GHc <%= @tithes.sum(:amount) %></th>
+		</tr>
+	</tfoot>
 </table>
 
 	

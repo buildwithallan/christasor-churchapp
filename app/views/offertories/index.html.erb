@@ -2,8 +2,8 @@
 	<thead>
 		<tr>
 		   <th>Id</th>
-		   <th>Amount</th>
 		   <th>Description</th>
+		   <th>Amount</th>
 		   <th>Date</th>
 		</tr>
 	</thead>
@@ -11,12 +11,20 @@
 		<% @offertories.each do |offertory| %>
 		  <tr>
 		  	<td><%= offertory.id %></td>
-			<td>GHc <%= offertory.amount %></td>
 			<td><%= offertory.description %></td>
+			<td>GHc <%= offertory.amount %></td>
 			<td><%= offertory.created_at%></td>
 		  </tr>
 		<% end %>
 	</tbody>
+	<tfoot>
+		<tr>
+			<th></th>
+			<th>Total = </th>
+			<th>GHc <%= @offertories.sum(:amount) %></th>
+
+		</tr>
+	</tfoot>
 </table>
 
 

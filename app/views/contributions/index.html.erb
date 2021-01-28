@@ -3,8 +3,8 @@
 		<tr>
 		   <th>Id</th>
 		   <th>Name</th>
-		   <th>Amount</th>
 		   <th>Purpose</th>
+		   <th>Amount</th>
 		   <th>Date</th>
 		</tr>
 	</thead>
@@ -13,12 +13,20 @@
 		  <tr>
 		  	<td><%= contribution.id %></td>
 			<td><%= contribution.name %></td>
-			<td>GHc <%= contribution.amount %></td>
 			<td><%= contribution.purpose %></td>
+			<td>GHc <%= contribution.amount %></td>
 			<td><%= contribution.created_at%></td>
 		  </tr>
 		<% end %>
 	</tbody>
+	<tfoot>
+		<tr>
+			<th></th>
+			<th></th>
+			<th>Total = </th>
+			<th>GHc <%= @contributions.sum(:amount) %></th>
+		</tr>
+	</tfoot>
 </table>
 
 
