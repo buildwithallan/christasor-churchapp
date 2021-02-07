@@ -1,6 +1,9 @@
 class BranchesController < ApplicationController
   def index
-  	@branches = Branch.all
+  	#@branches = Branch.all
+
+     @q = Branch.ransack(params[:q])
+     @branches = @q.result(distinct: true)
   end
 
   def new

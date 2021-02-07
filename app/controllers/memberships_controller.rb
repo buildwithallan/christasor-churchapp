@@ -1,6 +1,9 @@
 class MembershipsController < ApplicationController
   def index
-    @memberships = Membership.all
+   # @memberships = Membership.all
+
+    @q = Membership.ransack(params[:q])
+    @memberships = @q.result(distinct: true)
   end
 
   def new

@@ -1,3 +1,10 @@
+<%= search_form_for @q do |f| %>
+  <%= f.search_field :purpose_cont %>
+  <%= f.date_field :expense_date_gteq %>
+  <%= f.date_field :expense_date_lteq %>
+  <%= f.submit %>
+<% end %>
+
 <table>
 	<thead>
 		<tr>
@@ -13,7 +20,7 @@
 		  	<td><%= expense.id %></td>
 		  	<td><%= expense.purpose %></td>
 			<td>GHc <%= expense.amount %></td>			
-			<td><%= expense.expense_date%></td>
+			<td><%= expense.expense_date.strftime('%A, %d %b %Y')%></td>
 		  </tr>
 		<% end %>
 	</tbody>

@@ -1,3 +1,10 @@
+<%= search_form_for @q do |f| %>
+  <%= f.search_field :membership_member_id_or_membership_firstname_or_membership_lastname_cont %>
+  <%= f.date_field :created_at_gteq %>
+  <%= f.date_field :created_at_lteq %>
+  <%= f.submit %>
+<% end %>
+
 <table>
 	<thead>
 		<tr>
@@ -16,7 +23,7 @@
 			<td><%= tithe.membership.member_id %></td>
 			<td><%= tithe.membership.firstname + " " + tithe.membership.lastname%></td>
 			<td>GHc <%= tithe.amount %></td>
-			<td><%= tithe.created_at %></td>
+			<td><%= tithe.created_at.strftime('%A, %d %b %Y %l:%M %p') %></td>
 		</tr>
 		<% end %>
 	</tbody>

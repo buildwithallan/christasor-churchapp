@@ -1,6 +1,9 @@
 class TithesController < ApplicationController
   def index
-  	@tithes = Tithe.all
+  	#@tithes = Tithe.all
+
+     @q = Tithe.ransack(params[:q])
+     @tithes = @q.result.includes(:membership)
   end
 
   def new

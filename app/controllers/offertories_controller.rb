@@ -1,6 +1,9 @@
 class OffertoriesController < ApplicationController
    def index
-  	@offertories = Offertory.all
+  	#@offertories = Offertory.all
+
+     @q = Offertory.ransack(params[:q])
+     @offertories = @q.result(distinct: true)
   end
 
   def new
