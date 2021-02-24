@@ -1,8 +1,25 @@
-<%= form_for @offertory do |f| %>
-	<%= f.label :amount, "Amount" %>
-	<%= f.text_field :amount %>
-	<%= f.label :description %>
-	<%= f.text_field :description %>
+<h1 class="font-bold">Offertory</h1>
+<p class="text-sm">Offertory > Add New Offertory</p> 
 
-	<%= f.submit "Submit" %>
-<% end %>
+<div class="mt-8">   
+  <form class="bg-white px-4 max-w-lg rounded-t p-5 border-t-2 border-blue-500 mx-auto">
+	<div>
+	  <%= form_for @offertory do |f| %>
+		<div>
+		  <%= f.label :amount, "Amount" %>
+	      <%= f.text_field :amount, class: 'border border-gray-300 block w-full rounded px-2 py-1 focus:outline-none focus:border-blue-100 mb-2' %>
+		</div>
+
+		<div>		
+	      <%= f.label :description %>
+	      <%= f.text_field :description, class: 'border border-gray-300 block w-full rounded px-2 py-1 focus:outline-none focus:border-blue-100 mb-2' %>
+		</div>
+
+		<div>
+			<%= f.submit "Submit", class: "bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded cursor-pointer" %>
+		</div>	
+
+      <% end %> 
+	</div>	
+  </form>
+</div>

@@ -1,26 +1,33 @@
+<div class="mt-5 mb-8">
+    <%= link_to "Add Expenses", new_expense_path, class: 'bg-blue-500 p-2 text-white hover:bg-blue-600' %>
+</div>
+
 <%= search_form_for @q do |f| %>
-  <%= f.search_field :purpose_cont %>
-  <%= f.date_field :expense_date_gteq %>
-  <%= f.date_field :expense_date_lteq %>
-  <%= f.submit %>
+  <%= f.search_field :purpose_cont, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded' %>
+  <%= f.date_field :expense_date_gteq, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded' %>
+  <%= f.date_field :expense_date_lteq, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded' %>
+  <%= button_tag(type: "Search", class: "border  bg-blue-400 text-white p-1 rounded hover:border-gray-700") do %>
+   		Search
+   <% end %>
 <% end %>
 
-<table>
+<div class="inline-block min-w-full shadow rounded-lg overflow-hidden mt-5 border-t-2 border-gray-500">
+	<table class="w-full bg-white">
 	<thead>
-		<tr>
-		   <th>Id</th>
-		   <th>Purpose</th>
-		   <th>Amount</th>
-		   <th>Date</th>
+		<tr class="border-b-2 border-gray-200">
+		   <th class="text-left px-3 py-2">Id</th>
+		   <th class="text-left px-3 py-2">Purpose</th>
+		   <th class="text-left px-3 py-2">Amount</th>
+		   <th class="text-left px-3 py-2">Date</th>
 		</tr>
 	</thead>
 	<tbody>
 		<% @expenses.each do |expense| %>
-		  <tr>
-		  	<td><%= expense.id %></td>
-		  	<td><%= expense.purpose %></td>
-			<td>GHc <%= expense.amount %></td>			
-			<td><%= expense.expense_date.strftime('%A, %d %b %Y')%></td>
+		  <tr class="border-b border-gray-200 hover:bg-gray-100">
+		  	<td class="px-3 py-1"><%= expense.id %></td>
+		  	<td class="px-3 py-1"><%= expense.purpose %></td>
+			<td class="px-3 py-1">GHc <%= expense.amount %></td>			
+			<td class="px-3 py-1"><%= expense.expense_date.strftime('%A, %d %b %Y')%></td>
 		  </tr>
 		<% end %>
 	</tbody>
@@ -28,10 +35,12 @@
 		<tr>
 			<th></th>
 			<th>Total = </th>
-			<th>GHc <%= @expenses.sum(:amount) %></th>
+			<th class="text-left px-3 py-2">GHc <%= @expenses.sum(:amount) %></th>
 		</tr>
 	</tfoot>
 </table>
 
 
 
+
+</div>

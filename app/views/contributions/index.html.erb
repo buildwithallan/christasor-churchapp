@@ -1,28 +1,36 @@
+<div class="mt-5 mb-8">
+    <%= link_to "Add Contribution", new_contribution_path, class: 'bg-blue-500 p-2 text-white hover:bg-blue-600' %>
+</div>
+
 <%= search_form_for @q do |f| %>
-  <%= f.search_field :name_or_purpose_cont %>
-  <%= f.date_field :created_at_gteq %>
-  <%= f.date_field :created_at_lteq %>
-  <%= f.submit %>
+  <%= f.search_field :name_or_purpose_cont, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded' %>
+  <%= f.date_field :created_at_gteq, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded' %>
+  <%= f.date_field :created_at_lteq, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded' %>
+   <%= button_tag(type: "Search", class: "border  bg-blue-400 text-white p-1 rounded hover:border-gray-700") do %>
+   		Search
+   <% end %>
 <% end %>
 
-<table>
+
+<div class="inline-block min-w-full shadow rounded-lg overflow-hidden mt-5 border-t-2 border-gray-500">
+	<table class="w-full bg-white">
 	<thead>
-		<tr>
-		   <th>Id</th>
-		   <th>Name</th>
-		   <th>Purpose</th>
-		   <th>Amount</th>
-		   <th>Date</th>
+		<tr class="border-b-2 border-gray-200">
+		   <th class="text-left px-3 py-2">Id</th>
+		   <th class="text-left px-3 py-2">Name</th>
+		   <th class="text-left px-3 py-2">Purpose</th>
+		   <th class="text-left px-3 py-2">Amount</th>
+		   <th class="text-left px-3 py-2">Date</th>
 		</tr>
 	</thead>
 	<tbody>
 		<% @contributions.each do |contribution| %>
-		  <tr>
-		  	<td><%= contribution.id %></td>
-			<td><%= contribution.name %></td>
-			<td><%= contribution.purpose %></td>
-			<td>GHc <%= contribution.amount %></td>
-			<td><%= contribution.created_at.strftime('%A, %d %b %Y %l:%M %p')%></td>
+		  <tr class="border-b border-gray-200 hover:bg-gray-100">
+		  	<td class="px-3 py-1"><%= contribution.id %></td>
+			<td class="px-3 py-1"><%= contribution.name %></td>
+			<td class="px-3 py-1"><%= contribution.purpose %></td>
+			<td class="px-3 py-1">GHc <%= contribution.amount %></td>
+			<td class="px-3 py-1"><%= contribution.created_at.strftime('%A, %d %b %Y %l:%M %p')%></td>
 		  </tr>
 		<% end %>
 	</tbody>
@@ -31,10 +39,13 @@
 			<th></th>
 			<th></th>
 			<th>Total = </th>
-			<th>GHc <%= @contributions.sum(:amount) %></th>
+			<th class="text-left px-3 py-2">GHc <%= @contributions.sum(:amount) %></th>
 		</tr>
 	</tfoot>
 </table>
 
 
+
+
+</div>
 

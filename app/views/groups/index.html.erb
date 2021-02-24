@@ -1,18 +1,25 @@
-<table>
+<div class="mt-5">
+    <%= link_to "Add Group", new_group_path, class: 'bg-blue-500 p-2 text-white hover:bg-blue-600' %>
+</div>
+
+
+<div  class="inline-block min-w-full shadow rounded-lg overflow-hidden mt-5 border-t-2 border-gray-500">
+ <table class="w-full bg-white">
 	<thead>
-		<tr>
-			<th>Id</th>
-			<th>Group Name</th>
+		<tr class="border-b-2 border-gray-200">
+			<th class="text-left px-3 py-2">Id</th>
+			<th class="text-left px-3 py-2">Group Name</th>
 		</tr>
 	</thead>
 	<tbody>
 	  <% @groups.each do |group| %>
-		<tr>
-			<td><%= group.id %></td>
-			<td><%= link_to group.group_name %></td>
+		<tr class="border-b border-gray-200 hover:bg-gray-100">
+			<td class="px-3 py-1"><%= group.id %></td>
+			<td class="px-3 py-1"><%= link_to group.group_name %></td>
 		</tr>
 	</tbody>
 	  <% end %>
 </table>
-
+	
+</div>
 

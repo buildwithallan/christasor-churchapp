@@ -7,13 +7,21 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
   </head>
 
-  <body>
-      <%= render "layouts/header" %>
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+  <body class="font-serif text-gray-600 bg-gray-200">
+    <div class="wrapper flex">
+     
+    <%= render "layouts/sidebar" %>
 
-    <%= yield %>
+     <main class="w-full p-5">
+      <p class="notice text-center"><%= notice %></p>
+       <p class="alert text-center"><%= alert %></p>
+         <%= yield %>
+        
+     </main>   
+    </div>
   </body>
 </html>

@@ -1,31 +1,40 @@
+<div class="mt-5">
+    <%= link_to "Add Membership", new_membership_path, class: 'bg-blue-500 p-2 text-white hover:bg-blue-600' %>
+</div>
 
 <%= search_form_for @q do |f| %>
-  <%= f.search_field :firstname_or_lastname_or_member_id_or_position_cont%>
-  <%= f.submit %>
+	<div class="flex float-right">
+      <%= f.search_field :firstname_or_lastname_or_member_id_or_position_cont, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded-l',  placeholder: 'Search...' %>
+  
+       <%= button_tag(type: "Search", class: "border  bg-white rounded-r hover:border-gray-700") do %>
+       <svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+       <% end %>
 <% end %>
+    </div>
 
 
-<table>
+<div class="inline-block min-w-full shadow rounded-lg overflow-hidden mt-5 border-t-2 border-gray-500">
+	<table class="w-full bg-white">
 	<thead>
-		<tr>
-			<th>Id</th>
-			<th>Pic</th>
-			<th>Name</th>
-			<th>Membership No.</th>
-			<th>Position</th>
-			<th>Phone number</th>
-			<th colspan="3">Actions</th>
+		<tr class="border-b-2 border-gray-200">
+			<th class="text-left px-3 py-2">Id</th>
+			<th class="text-left px-4 py-2">Pic</th>
+			<th class="text-left px-3 py-2">Name</th>
+			<th class="text-left px-3 py-2">Membership No.</th>
+			<th class="text-left px-3 py-2">Position</th>
+			<th class="text-left px-3 py-2">Phone number</th>
+			<th class="text-left px-3 py-2" colspan="3">Actions</th>
 		</tr>
 	</thead>
 	<tbody>
 		<% @memberships.each do |membership| %>
-		<tr>
-			<td><%= membership.id %></td>
-			<td><%= image_tag(membership.image, :size => '60x60') if membership.image.attached? %></td>
-			<td><%= membership.firstname %> <%= membership.lastname %> <%= membership.othernames %></td>
-			<td><%= membership.member_id %></td>
-			<td><%= membership.position %></td>
-			<td><%= membership.primary_phone_number %></td>
+		<tr class="border-b border-gray-200 hover:bg-gray-100">
+			<td class="px-3"><%= membership.id %></td>
+			<td class="px-3"><%= image_tag(membership.image, :size => '50x50') if membership.image.attached? %></td>
+			<td class="px-3"><%= membership.firstname %> <%= membership.lastname %> <%= membership.othernames %></td>
+			<td class="px-3"><%= membership.member_id %></td>
+			<td class="px-3"><%= membership.position %></td>
+			<td class="px-3"><%= membership.primary_phone_number %></td>
 			<td><%= link_to "Show", membership_path(membership.id) %></td>
 			<td><%= link_to "Edit", edit_membership_path(membership.id)%></td>
 			<td><%= link_to "Delete", membership_path(membership.id), method: :delete %></td>
@@ -33,6 +42,8 @@
 		<% end %>
 	</tbody>
 </table>
+
+</div>
 
 
   

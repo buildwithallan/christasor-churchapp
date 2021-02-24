@@ -10,10 +10,13 @@ require("channels")
 
 
 import '../css/application.css'
+import 'stylesheets/application'
 
 // Add Choices Dropdown
 const Choices = require('choices.js')
 document.addEventListener("turbolinks:load", function() {
     var dropDownSelects = new Choices('#dropdown-choice-select')
 })
+
+
 

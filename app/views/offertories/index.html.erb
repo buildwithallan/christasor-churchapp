@@ -1,27 +1,34 @@
+<div class="mt-5 mb-8">
+    <%= link_to "Add Offertory", new_offertory_path, class: 'bg-blue-500 p-2 text-white hover:bg-blue-600' %>
+</div>
+
+
 <%= search_form_for @q do |f| %>
-  <%= f.search_field :description_cont %>
-  <%= f.date_field :created_at_gteq %>
-  <%= f.date_field :created_at_lteq %>
-  <%= f.submit %>
+  <%= f.search_field :description_cont, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded'  %>
+  <%= f.date_field :created_at_gteq, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded'  %>
+  <%= f.date_field :created_at_lteq, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded'  %>
+  <%= button_tag(type: "Search", class: "border  bg-blue-400 text-white p-1 rounded hover:border-gray-700") do %>
+   		Search
+   <% end %>
 <% end %>
 
-
-<table>
+<div class="inline-block min-w-full shadow rounded-lg overflow-hidden mt-5 border-t-2 border-gray-500">	
+<table class="w-full bg-white">
 	<thead>
-		<tr>
-		   <th>Id</th>
-		   <th>Description</th>
-		   <th>Amount</th>
-		   <th>Date</th>
+		<tr class="border-b-2 border-gray-200">
+		   <th class="text-left px-3 py-2">Id</th>
+		   <th class="text-left px-3 py-2">Description</th>
+		   <th class="text-left px-3 py-2">Amount</th>
+		   <th class="text-left px-3 py-2">Date</th>
 		</tr>
 	</thead>
 	<tbody>
 		<% @offertories.each do |offertory| %>
-		  <tr>
-		  	<td><%= offertory.id %></td>
-			<td><%= offertory.description %></td>
-			<td>GHc <%= offertory.amount %></td>
-			<td><%= offertory.created_at.strftime('%A, %d %b %Y %l:%M %p')%></td>
+		  <tr class="border-b border-gray-200 hover:bg-gray-100">
+		  	<td class="px-3 py-1"><%= offertory.id %></td>
+			<td class="px-3 py-1"><%= offertory.description %></td>
+			<td class="px-3 py-1">GHc <%= offertory.amount %></td>
+			<td class="px-3 py-1"><%= offertory.created_at.strftime('%A, %d %b %Y %l:%M %p')%></td>
 		  </tr>
 		<% end %>
 	</tbody>
@@ -29,11 +36,14 @@
 		<tr>
 			<th></th>
 			<th>Total = </th>
-			<th>GHc <%= @offertories.sum(:amount) %></th>
+			<th class="text-left px-3 py-2">GHc <%= @offertories.sum(:amount) %></th>
 
 		</tr>
 	</tfoot>
 </table>
+</div>
+
+
 
 
 

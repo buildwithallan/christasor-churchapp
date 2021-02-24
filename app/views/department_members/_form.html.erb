@@ -1,0 +1,25 @@
+<h1 class="font-bold">Department Member</h1>
+<p class="text-sm">Department Member > Add Department Member</p>
+
+<div class="mt-8">	
+  <form class="bg-white px-4 max-w-lg rounded-t p-5 border-t-2 border-blue-500 mx-auto">
+	<div>
+	  <%= form_for @department_member do |f| %>
+		<div>
+		   <%= f.label :fullname %>
+	       <%= f.text_field :name, class: 'border border-gray-300 block w-full rounded px-2 py-1 focus:outline-none focus:border-blue-100 mb-2' %>
+		</div>
+
+		<div>		
+	       <%= f.label :Department %>
+	       <%= f.select :department_id, options_for_select(Department.all.map{|c| [c.name, c.id]}), {:include_blank => '--Select One--'}, class: 'border border-gray-300 block w-full rounded px-2 py-1 focus:outline-none focus:border-blue-100 mb-2'  %>
+		</div>
+
+		<div>
+			<%= f.submit "Create", class: "bg-transparent hover:bg-blue-500 text-blue-500 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded cursor-pointer" %>
+		</div>	
+      <% end %>
+	</div>	
+  </form>
+</div> 
+
