@@ -12,7 +12,7 @@ class DepartmentMembersController < ApplicationController
   	@department_member = DepartmentMember.create(departmentmember_params)
 
   	if @department_member.save
-  		redirect_to member_groups
+  		redirect_to department_members_path
   	else
   		render :new
   	end
