@@ -1,6 +1,7 @@
 class PledgesController < ApplicationController
   def index
-  	@pledges = Pledge.all
+  	@q = Pledge.ransack(params[:q])
+    @pledges = @q.result(distinct: true)
   end
 
   def new

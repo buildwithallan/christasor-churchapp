@@ -2,9 +2,9 @@
 <p class="text-sm">Department > Add New Department</p> 
 
 <div class="mt-8">
-  <form class="bg-white px-4 max-w-lg rounded-t p-5 border-t-2 border-blue-500 mx-auto"> 
-    <div>
-      <%= form_for @department do |f| %>
+  
+    <div class="bg-white px-4 max-w-lg rounded-t p-5 border-t-2 border-blue-500 mx-auto">
+      <%= form_for @department, method: :post do |f| %>
         <div>
           <%= f.label :department %>
           <%= f.text_field :name, class: 'border border-gray-300 block w-full rounded px-2 py-1 focus:outline-none focus:border-blue-100 mb-2' %>
@@ -14,7 +14,7 @@
         </div>
       <% end %> 
     </div>
-  </form>
+  
 </div>
 
 

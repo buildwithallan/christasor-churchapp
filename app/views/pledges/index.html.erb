@@ -1,2 +1,52 @@
-<h1>Pledges#index</h1>
-<p>Find me in app/views/pledges/index.html.erb</p>
+<div class="mt-5 mb-8">
+    <%= link_to "Add Pledge", new_pledge_path, class: 'bg-blue-500 p-2 text-white hover:bg-blue-600' %>
+</div>
+
+<%= search_form_for @q do |f| %>
+  <%= f.search_field :membername_or_payment_or_remarks_cont, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded' %>
+  <%= f.date_field :created_at_gteq, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded' %>
+  <%= f.date_field :created_at_lteq, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded' %>
+   <%= button_tag(type: "Search", class: "border  bg-blue-400 text-white p-1 rounded hover:border-gray-700") do %>
+   		Search
+   <% end %>
+<% end %>
+
+
+<div class="inline-block min-w-full shadow rounded-lg overflow-hidden mt-5 border-t-2 border-gray-500">
+	<table class="w-full bg-white">
+	<thead>
+		<tr class="border-b-2 border-gray-200">
+		   <th class="text-left px-3 py-2">Pledge Id</th>
+		   <th class="text-left px-3 py-2">Name</th>
+		   <th class="text-left px-3 py-2">Amount</th>
+		   <th class="text-left px-3 py-2">Payment Status</th>
+		   <th class="text-left px-3 py-2">Remarks</th>
+		   <th class="text-left px-3 py-2">Date</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @pledges.each do |pledge| %>
+		  <tr class="border-b border-gray-200 hover:bg-gray-100">
+		  	<td class="px-3 py-1"><%= pledge.id %></td>
+			<td class="px-3 py-1"><%= pledge.membername %></td>
+			<td class="px-3 py-1">GHc<%= pledge.amount %></td>
+			<td class="px-3 py-1"><%= pledge.payment %></td>
+			<td class="px-3 py-1"><%= pledge.remarks %></td>
+			<td class="px-3 py-1"><%= pledge.created_at.strftime('%A, %d %b %Y %l:%M %p')%></td>
+		  </tr>
+		<% end %>
+	</tbody>
+	<tfoot>
+		<tr>
+			<th></th>
+			<th>Total = </th>
+			<th colspan="3" class="text-left px-3 py-2">GHc <%= @pledges.sum(:amount) %></th>
+		</tr>
+	</tfoot>
+</table>
+
+
+
+
+</div>
+

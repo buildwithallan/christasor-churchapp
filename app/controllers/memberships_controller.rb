@@ -32,7 +32,7 @@ class MembershipsController < ApplicationController
   	@membership = Membership.find(params[:id])
 
   	if @membership.update(membership_params)
-  	 redirect_to @membership
+  	 redirect_to :action => :index
   	 else
   	 render :edit	
   	end

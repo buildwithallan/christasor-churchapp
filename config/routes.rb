@@ -1,7 +1,4 @@
-Rails.application.routes.draw do
-
-  
-  
+Rails.application.routes.draw do 
   
   devise_for :users
   get 'dashboard/index'
@@ -18,5 +15,8 @@ Rails.application.routes.draw do
   resources :offertories
   resources :expenses
   resources :pledges
+  resources :incomes
+
+  
   
 end

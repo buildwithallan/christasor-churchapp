@@ -1,7 +1,7 @@
  <% if current_user %>
  <aside class="bg-white w-80 border-r min-h-screen border-r border-gray-200">
          <h1 class="p-3 border-b border-gray-100 uppercase font-bold text-center text-blue-700">
-           <a href="" class="pt-5">Winners Church</a>
+           <a href="" class="pt-5">Awake International</a>
          </h1>
           <ul>
             <li class="text-gray-500 hover:text-blue-700">
@@ -56,12 +56,15 @@
                     </span> 
                     <span class="flex p-2 hover:bg-gray-200 border-r-4 hover:border-blue-500">        
                        <%= link_to "Contribution", contributions_path, class: 'ml-14' %>
+                    </span>
+                    <span class="flex p-2 hover:bg-gray-200 border-r-4 hover:border-blue-500">        
+                       <%= link_to "Pledge", pledges_path, class: 'ml-14' %>
                     </span> 
                     <span class="flex p-2 hover:bg-gray-200 border-r-4 hover:border-blue-500">        
                        <%= link_to "Expenses", expenses_path, class: 'ml-14' %>
                     </span> 
                     <span class="flex p-2 hover:bg-gray-200 border-r-4 hover:border-blue-500"> 
-                       <%= link_to "Income", memberships_path, class: 'ml-14' %>
+                       <%= link_to "Income", incomes_path, class: 'ml-14' %>
                     </span>         
                 </li>
               </ul>  
