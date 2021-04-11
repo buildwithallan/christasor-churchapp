@@ -1,10 +1,7 @@
 class MemberGroupsController < ApplicationController
   def index
-  	#@member_groups = MemberGroup.all
-
-
      @q = MemberGroup.ransack(params[:q])
-     @member_groups = @q.result(distinct: true)
+     @pagy, @member_groups = pagy(@q.result(distinct: true))
   end
 
   def new

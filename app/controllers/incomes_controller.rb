@@ -1,6 +1,6 @@
 class IncomesController < ApplicationController
   def index
-  	@incomes = Income.all
+  	@pagy, @incomes = pagy(Income.all)
   end
 
   def new

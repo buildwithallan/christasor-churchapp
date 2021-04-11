@@ -1,7 +1,7 @@
 class DepartmentMembersController < ApplicationController
   def index
   	 @q = DepartmentMember.ransack(params[:q])
-     @department_members = @q.result(distinct: true)
+     @pagy, @department_members = pagy(@q.result(distinct: true))
   end
 
   def new

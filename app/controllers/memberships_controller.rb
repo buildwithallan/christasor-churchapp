@@ -1,9 +1,7 @@
 class MembershipsController < ApplicationController
   def index
-   # @memberships = Membership.all
-
     @q = Membership.ransack(params[:q])
-    @memberships = @q.result(distinct: true)
+    @pagy, @memberships = pagy(@q.result(distinct: true))
   end
 
   def new
@@ -48,6 +46,6 @@ class MembershipsController < ApplicationController
   private
 
   def membership_params
-  	params.require(:membership).permit(:image, :member_id, :firstname, :lastname, :othernames, :title, :position, :gender, :date_of_birth, :primary_phone_number, :other_phone_number, :email, :hometown, :residential_location, :occupation, :marital_status, :work_place, :year_joining_church )	
+  	params.require(:membership).permit(:image, :member_id, :firstname, :lastname, :othernames, :title, :position, :gender, :date_of_birth, :primary_phone_number, :other_phone_number, :email, :hometown, :residential_location, :occupation, :marital_status, :work_place, :year_joining_church)	
   end
 end

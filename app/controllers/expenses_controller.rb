@@ -1,10 +1,8 @@
 class ExpensesController < ApplicationController
   
   def index
-  	@expenses = Expense.all
-
      @q = Expense.ransack(params[:q])
-     @expenses = @q.result(distinct: true)
+     @pagy, @expenses = pagy(@q.result(distinct: true))
   end
 
   def new

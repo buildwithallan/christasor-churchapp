@@ -1,6 +1,6 @@
 class DepartmentsController < ApplicationController
   def index
-  	@departments = Department.all
+  	@pagy, @departments = pagy(Department.all)
   end
 
   def new

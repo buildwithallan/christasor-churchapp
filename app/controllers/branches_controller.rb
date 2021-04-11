@@ -1,9 +1,7 @@
 class BranchesController < ApplicationController
   def index
-  	#@branches = Branch.all
-
      @q = Branch.ransack(params[:q])
-     @branches = @q.result(distinct: true)
+     @pagy, @branches = pagy(@q.result(distinct: true))
   end
 
   def new

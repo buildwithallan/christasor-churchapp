@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   
   def index
-  	@groups = Group.all
+  	@pagy, @groups = pagy(Group.all)
   end
 
   def new

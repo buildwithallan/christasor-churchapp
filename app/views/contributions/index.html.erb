@@ -42,10 +42,9 @@
 			<th class="text-left px-3 py-2">GHc <%= @contributions.sum(:amount) %></th>
 		</tr>
 	</tfoot>
-</table>
-
-
-
-
+  </table>
 </div>
+
+<%= pagy_nav(@pagy).html_safe %>
+
 

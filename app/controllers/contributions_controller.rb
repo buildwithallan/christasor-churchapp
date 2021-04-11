@@ -1,10 +1,8 @@
 class ContributionsController < ApplicationController
  
   def index
-  	#@contributions = Contribution.all
-
      @q = Contribution.ransack(params[:q])
-     @contributions = @q.result(distinct: true)
+     @pagy, @contributions = pagy(@q.result(distinct: true))
   end
 
   def new
