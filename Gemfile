@@ -59,3 +59,5 @@ gem 'devise', '~> 4.7', '>= 4.7.3'
 gem 'ransack', '~> 2.4', '>= 2.4.2'
 
 gem 'pagy', '~> 3.1'
+
+gem 'chartkick', '~> 4.0', '>= 4.0.3'
