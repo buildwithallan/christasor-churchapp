@@ -1,4 +1,6 @@
 class Membership < ApplicationRecord
+	extend FriendlyId
+    friendly_id :firstname, use: :slugged
 	
 	validates :firstname, presence: true
 	validates :lastname, presence: true

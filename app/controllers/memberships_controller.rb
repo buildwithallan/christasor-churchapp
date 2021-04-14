@@ -19,15 +19,15 @@ class MembershipsController < ApplicationController
   end
 
   def show
-  	@membership = Membership.find(params[:id])
+  	@membership = Membership.friendly.find(params[:id])
   end
 
   def edit
-  	@membership = Membership.find(params[:id])
+  	@membership = Membership.friendly.find(params[:id])
   end
 
   def update
-  	@membership = Membership.find(params[:id])
+  	@membership = Membership.friendly.find(params[:id])
 
   	if @membership.update(membership_params)
   	 redirect_to :action => :index
