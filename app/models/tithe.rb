@@ -7,5 +7,10 @@ class Tithe < ApplicationRecord
    ransacker :created_at, type: :date do
     Arel.sql('date(tithes.created_at)')
    end
+
+   def ind_tithe
+  	Tithe.where(membership_id: membership.id).sum(:amount)
+  end
+
   
 end

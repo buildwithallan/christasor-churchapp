@@ -1,9 +1,9 @@
 <div class="mt-5">
-    <%= link_to "Add Group", new_group_path, class: 'bg-blue-500 p-2 text-white hover:bg-blue-600' %>
+    <%= link_to "Add Group", new_group_path, class: 'bg-blue-500 p-2 text-white hover:bg-blue-600 ml-40' %>
 </div>
 
 
-<div  class="max-w-xl shadow rounded-lg overflow-hidden mt-5 border-t-2 border-gray-500 mx-auto">
+<div  class="max-w-lg shadow rounded-lg overflow-hidden mt-5 border-t-2 border-gray-500 ml-40">
  <table class="w-full bg-white">
 	<thead>
 		<tr class="border-b-2 border-gray-200">
@@ -22,6 +22,8 @@
 </table>	
 </div>
 
-<%= pagy_nav(@pagy).html_safe %>
+<div class="mt-2 ml-40">
+  <%= pagy_nav(@pagy).html_safe %>	
+</div>
 
 

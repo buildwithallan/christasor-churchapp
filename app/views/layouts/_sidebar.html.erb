@@ -80,11 +80,7 @@
                 
               </button>
               <ul x-show="isOpen" @click.away="isOpen = false" >
-                <li class="bg-gray-100 text-sm">
-                  <span class="flex p-2 hover:bg-gray-200 border-r-4 hover:border-blue-500"> 
-                 
-                       <%= link_to "Branch", branches_path, class: 'ml-14' %>
-                    </span> 
+                <li class="bg-gray-100 text-sm"> 
                     <span class="flex p-2 hover:bg-gray-200 border-r-4 hover:border-blue-500">        
                        <%= link_to "Department", departments_path, class: 'ml-14' %>
                     </span>
