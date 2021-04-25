@@ -1,0 +1,11 @@
+<% if flash[:notice] %>
+<div class="px-4 py-3 leading-normal text-blue-700 bg-blue-100 rounded-lg" role="alert">
+  <%= flash[:notice] %>
+</div>
+<% end %>
+
+<% if flash[:alert] %>
+<div class="px-4 py-3 leading-normal text-red-700 bg-red-100 rounded-lg" role="alert">
+  <%= flash[:alert] %>
+</div>
+<% end %>

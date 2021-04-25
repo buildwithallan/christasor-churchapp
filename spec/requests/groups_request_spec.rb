@@ -29,7 +29,7 @@ RSpec.describe "Groups", type: :request do
 
       result = Group.last
       expect(result.group_name).to eq("Jericho")
-      expect(response).to redirect_to(:action => :index)
+      expect(response).to redirect_to groups_path
     end
   end
 end

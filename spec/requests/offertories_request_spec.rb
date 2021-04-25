@@ -27,7 +27,7 @@ RSpec.describe "Offertories", type: :request do
 
       result = Offertory.last
       expect(result.amount).to eq(150)
-      expect(response).to redirect_to(:action => :index)
+      expect(response).to redirect_to offertories_path
     end
   end
 

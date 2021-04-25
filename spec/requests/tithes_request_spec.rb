@@ -31,7 +31,7 @@ RSpec.describe "Tithes", type: :request do
 
       result = Tithe.last
       expect(result.amount).to eq(200)
-      expect(response).to redirect_to(:action => :index)
+      expect(response).to redirect_to tithes_path
     end
   end
 end

@@ -32,7 +32,7 @@ RSpec.describe "MemberGroups", type: :request do
 
       result = MemberGroup.last
       expect(result.fullname).to eq('Allan Aikins')
-      expect(response).to redirect_to(:action => :index)
+      expect(response).to redirect_to member_groups_path
     end
   end
 end

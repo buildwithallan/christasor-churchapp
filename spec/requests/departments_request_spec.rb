@@ -46,7 +46,7 @@ RSpec.describe "Departments", type: :request do
 
     it "deletes a department" do
       delete department_path(department), params: {id: department.id}
-      expect(response).to redirect_to(:action => :index)
+      expect(response).to redirect_to departments_path
     end
   end
 end

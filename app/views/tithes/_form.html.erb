@@ -3,8 +3,17 @@
 
 
 <div class="mt-8">
-	<div class="bg-white px-4 max-w-lg rounded-t p-5 border-t-2 border-blue-500 mx-auto">
-	  <%= form_for @tithe do |f| %>
+	<%= form_for @tithe do |f| %>
+        <% if @tithe.errors.any? %>
+         <div class="px-4 py-3 leading-normal text-red-700 bg-red-100 rounded-lg" role="alert">
+          <% @tithe.errors.full_messages.each do |message|%>
+            <div class="text-center"><%= message %></div>
+         <% end %>
+         </div>
+    <% end %>
+
+	<div class="bg-white px-4 max-w-lg rounded-t p-5 border-t-2 border-blue-500 mx-auto mt-3">
+	
 		<div>
 		  <%= f.label :Membership_id %>
 	      <%= f.select :membership_id, options_for_select(Membership.all.map{|c| [c.member_id, c.id]}), {:include_blank => '---Select MemberID ---'}, {id: 'dropdown-choice-select'}%>

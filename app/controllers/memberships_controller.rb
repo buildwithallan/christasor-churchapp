@@ -12,7 +12,7 @@ class MembershipsController < ApplicationController
   	@membership = Membership.create(membership_params)
 
   	if @membership.save
-  	  redirect_to :action => :index
+  	  redirect_to memberships_path, notice: "Member added successfully"
   	  else
   	  render :new	
   	end
@@ -30,17 +30,17 @@ class MembershipsController < ApplicationController
   	@membership = Membership.friendly.find(params[:id])
 
   	if @membership.update(membership_params)
-  	 redirect_to :action => :index
+  	 redirect_to membership_path, notice: "Member updated successfully"
   	 else
   	 render :edit	
   	end
   end
 
   def destroy
-  	@membership = Membership.find(params[:id])
+  	@membership = Membership.friendly.find(params[:id])
 
   	@membership.destroy
-  	redirect_to :action => :index
+  	redirect_to memberships_path
   end
 
   private

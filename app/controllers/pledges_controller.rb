@@ -12,7 +12,7 @@ class PledgesController < ApplicationController
   	@pledge = Pledge.create(pledge_params)
 
   	if @pledge.save
-  		redirect_to pledges_path
+  		redirect_to pledges_path, notice: "Pledge added successfully"
   	else
   		render :new
   	end

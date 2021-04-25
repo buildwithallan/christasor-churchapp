@@ -17,10 +17,8 @@
     <%= render "layouts/sidebar" %>
 
      <main class="w-full p-5">
-      <p class="notice text-center"><%= notice %></p>
-       <p class="alert text-center"><%= alert %></p>
-         <%= yield %>
-        
+      <%= render partial: "shared/flash" %>
+         <%= yield %>       
      </main>   
     </div>
   </body>

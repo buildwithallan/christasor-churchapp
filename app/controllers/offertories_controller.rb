@@ -12,7 +12,7 @@ class OffertoriesController < ApplicationController
   	@offertory = Offertory.create(offertory_params)
 
   	if @offertory.save
-  		redirect_to :action => :index
+  		redirect_to offertories_path, notice: "Offertory added successfully"
   	else
   		render :new
   	end

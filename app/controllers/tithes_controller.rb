@@ -12,7 +12,7 @@ class TithesController < ApplicationController
   	@tithe = Tithe.create(tithe_params)
 
   	if @tithe.save
-  		redirect_to :action => :index
+  		redirect_to tithes_path, notice: "Tithe added successfully"
   	else
   		render :new
   	end

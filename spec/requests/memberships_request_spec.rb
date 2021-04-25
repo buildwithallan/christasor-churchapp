@@ -47,7 +47,7 @@ RSpec.describe "Memberships", type: :request do
 
       result = Membership.last
       expect(result.firstname).to eq('Allan')
-      expect(response).to redirect_to(:action => :index)
+      expect(response).to redirect_to memberships_path
     end
   end
 
@@ -56,8 +56,7 @@ RSpec.describe "Memberships", type: :request do
 
     it "deletes a member" do    
       delete membership_path(membership), params: {id: membership.id}
-      expect(response).to redirect_to(:action => :index)
+      expect(response).to redirect_to memberships_path
     end
   end
-
 end

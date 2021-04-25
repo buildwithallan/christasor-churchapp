@@ -28,7 +28,7 @@ RSpec.describe "Contributions", type: :request do
 
       result = Contribution.last
       expect(result.name).to eq("Allan Aikins")
-      expect(response).to redirect_to(:action => :index)
+      expect(response).to redirect_to contributions_path
     end 
   end
 

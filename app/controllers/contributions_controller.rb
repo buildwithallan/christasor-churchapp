@@ -13,7 +13,7 @@ class ContributionsController < ApplicationController
   	@contribution = Contribution.create(contribution_params)
 
   	if @contribution.save
-  	  redirect_to :action => :index
+  	  redirect_to contributions_path, notice: "Contribution added successfully"
   	else
   		render :new
   	end

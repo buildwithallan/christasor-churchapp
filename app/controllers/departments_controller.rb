@@ -11,9 +11,9 @@ class DepartmentsController < ApplicationController
   	@department = Department.create(department_params)
 
   	if @department.save
-  	  redirect_to :action => :index
+  	  redirect_to departments_path, notice: "Department created successfully"
   	 else
-  	  render :new	
+  	  render :new
   	end
   end
 

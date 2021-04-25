@@ -30,7 +30,7 @@ RSpec.describe "DepartmentMembers", type: :request do
 
       result = DepartmentMember.last
       expect(result.name).to eq('Allan Aikins')
-      expect(response).to redirect_to(department_members_path)
+      expect(response).to redirect_to department_members_path
     end
   end
 

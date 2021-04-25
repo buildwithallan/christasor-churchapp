@@ -11,7 +11,7 @@ class IncomesController < ApplicationController
   	@income = Income.create(income_params)
 
   	if @income.save
-  		redirect_to :action => :index
+  		redirect_to incomes_path, notice: "Income added successfully"
   	else
   		render :new
   	end

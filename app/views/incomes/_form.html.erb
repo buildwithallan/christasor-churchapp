@@ -2,8 +2,16 @@
 <p class="text-sm">Income > Add New Income</p> 
 
 <div class="mt-10"> 
-    <div class="bg-white px-4 max-w-lg rounded-t p-5 border-t-2 border-blue-500 mx-auto">
-	  <%= form_for(@income) do |f| %>
+	<%= form_for @income do |f| %>
+        <% if @income.errors.any? %>
+         <div class="px-4 py-3 leading-normal text-red-700 bg-red-100 rounded-lg" role="alert">
+          <% @income.errors.full_messages.each do |message|%>
+            <div class="text-center"><%= message %></div>
+         <% end %>
+         </div>
+    <% end %>
+    <div class="bg-white px-4 max-w-lg rounded-t p-5 border-t-2 border-blue-500 mx-auto mt-3">
+	
 		<div>
 		   <%= f.label :total_tithe %>
 	       <%= f.text_field :totaltithe, class: 'border border-gray-300 block w-full rounded px-2 py-1 focus:outline-none focus:border-blue-100 mb-2'  %>

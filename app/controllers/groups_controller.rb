@@ -12,7 +12,7 @@ class GroupsController < ApplicationController
   	@group = Group.create(group_params)
 
   	if @group.save
-  		redirect_to :action => :index
+  		redirect_to groups_path, notice: "Group added successfully"
   	else
   		render :new
   	end

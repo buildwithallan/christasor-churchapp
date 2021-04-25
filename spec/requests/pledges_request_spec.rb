@@ -27,7 +27,7 @@ RSpec.describe "Pledges", type: :request do
 
       result = Pledge.last
       expect(result.payment).to eq('paid')
-      expect(response).to redirect_to(pledges_path)
+      expect(response).to redirect_to pledges_path
     end
   end
 

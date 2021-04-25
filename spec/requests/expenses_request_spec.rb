@@ -27,7 +27,7 @@ RSpec.describe "Expenses", type: :request do
 
       result = Expense.last
       expect(result.purpose).to eq('Electricity')
-      expect(response).to redirect_to(:action => :index)
+      expect(response).to redirect_to expenses_path
     end
   end
 

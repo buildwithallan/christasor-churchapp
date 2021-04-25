@@ -13,7 +13,7 @@ class ExpensesController < ApplicationController
   	@expense = Expense.create(expense_params)
 
   	if @expense.save
-  	  redirect_to :action => :index
+  	  redirect_to expenses_path, notice: "Expense added successfully"
   	  else
   	  render :new	
   	end
