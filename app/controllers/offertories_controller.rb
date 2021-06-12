@@ -1,4 +1,6 @@
 class OffertoriesController < ApplicationController
+  before_action :authenticate_user!
+  
    def index
      @q = Offertory.ransack(params[:q])
      @pagy, @offertories =pagy(@q.result(distinct: true))

@@ -1,8 +1,14 @@
 Rails.application.routes.draw do 
   
-  devise_for :users
   get 'dashboard/index'
   root 'dashboard#index'
+
+  
+  
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+
+  delete "logout", to: 'sessions#destroy'
 
   resources :tithes
   resources :groups
@@ -10,13 +16,11 @@ Rails.application.routes.draw do
   resources :department_members
   resources :departments
   resources :memberships
-  resources :branches
   resources :contributions
   resources :offertories
   resources :expenses
   resources :pledges
   resources :incomes
-
-  
+  resources :users 
   
 end

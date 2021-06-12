@@ -1,4 +1,6 @@
 class TithesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
      @q = Tithe.ransack(params[:q])
      @pagy, @tithes = pagy(@q.result.includes(:membership))

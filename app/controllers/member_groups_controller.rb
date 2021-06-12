@@ -1,4 +1,6 @@
 class MemberGroupsController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
      @q = MemberGroup.ransack(params[:q])
      @pagy, @member_groups = pagy(@q.result(distinct: true))

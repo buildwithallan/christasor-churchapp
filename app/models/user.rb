@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+	has_secure_password
 
-         has_many :departments
+	EMAIL_REGEX = /\A[^@\s]+@[^@\s]+\z/
+
+	validates :email, presence: true, uniqueness: true, format: {with: EMAIL_REGEX }
+	validates :user_type, presence: true
 end

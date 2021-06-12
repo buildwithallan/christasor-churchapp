@@ -1,4 +1,6 @@
 class PledgesController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
   	@q = Pledge.ransack(params[:q])
     @pagy, @pledges = pagy(@q.result(distinct: true))

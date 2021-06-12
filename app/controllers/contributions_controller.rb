@@ -1,5 +1,7 @@
 class ContributionsController < ApplicationController
- 
+
+ before_action :authenticate_user!
+
   def index
      @q = Contribution.ransack(params[:q])
      @pagy, @contributions = pagy(@q.result(distinct: true))

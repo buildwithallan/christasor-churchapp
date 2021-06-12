@@ -76,12 +76,6 @@ GEM
     childprocess (3.0.0)
     concurrent-ruby (1.1.7)
     crass (1.0.6)
-    devise (4.7.3)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0)
-      responders
-      warden (~> 1.2.3)
     diff-lcs (1.4.4)
     docile (1.3.2)
     erubi (1.10.0)
@@ -115,7 +109,6 @@ GEM
     nio4r (2.5.4)
     nokogiri (1.10.10-x64-mingw32)
       mini_portile2 (~> 2.4.0)
-    orm_adapter (0.5.0)
     pagy (3.12.0)
     public_suffix (4.0.6)
     puma (4.3.7)
@@ -157,9 +150,6 @@ GEM
       activesupport (>= 5.2.4)
       i18n
     regexp_parser (1.8.2)
-    responders (3.0.1)
-      actionpack (>= 5.0)
-      railties (>= 5.0)
     rspec-core (3.10.0)
       rspec-support (~> 3.10.0)
     rspec-expectations (3.10.0)
@@ -218,8 +208,6 @@ GEM
       thread_safe (~> 0.1)
     tzinfo-data (1.2020.4)
       tzinfo (>= 1.0.0)
-    warden (1.2.9)
-      rack (>= 2.0.9)
     web-console (4.1.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -244,11 +232,11 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
   chartkick (~> 4.0, >= 4.0.3)
-  devise (~> 4.7, >= 4.7.3)
   factory_bot_rails
   friendly_id (~> 5.4, >= 5.4.2)
   jbuilder (~> 2.7)

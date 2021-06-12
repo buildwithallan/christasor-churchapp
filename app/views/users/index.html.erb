@@ -1,0 +1,27 @@
+<div class="mt-5">
+    <%= link_to "Add New User", new_user_path, class: 'bg-blue-500 p-2 text-white hover:bg-blue-600' %>
+</div>
+
+
+
+<div class="inline-block min-w-full shadow rounded-lg overflow-hidden mt-5 border-t-2 border-gray-500">
+   <table class="w-full bg-white">
+	<thead>
+		<tr class="border-b-2 border-gray-200">
+			<th class="text-left px-3 py-2">Id</th>
+			<th class="text-left px-3 py-2">Email</th>
+			<th class="text-left px-3 py-2">User type</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @users.each do |user| %>
+
+		<tr class="border-b border-gray-200 hover:bg-gray-100">
+			<td class="px-3 py-1"><%= user.id %></td>
+			<td class="px-3 py-1"><%= user.email %></td>
+			<td class="px-3 py-1"><%= user.user_type %></td>
+		</tr>
+        <% end %>
+	</tbody>
+</table>
+</div>

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Tithes", type: :request do
+RSpec.describe "Users", type: :request do
 
 before do
   user = User.create!(email: "admin@admin.com", password: "password", user_type: "Admin")
@@ -9,28 +9,27 @@ end
 
   describe "GET /index" do
     it "returns http success" do
-      get "/tithes"
+      get "/users"
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET /new" do
     it "returns http success" do
-      get "/tithes/new"
+      get "/users/new"
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "POST /tithes" do
-    let(:membership){create(:membership)}
+  describe "POST /create" do
 
-    it "creates a tithe" do
-      post "/tithes", params: {tithe: {membership_id: membership.id, amount: 200}}
+    it "creates a new user" do
+      post "/users", params: {user: {email: 'admin@admin.com', password: 'admin1234', password_confirmation: 'admin1234', user_type: 'Admin'}}
 
-      result = Tithe.last
-      expect(result.amount).to eq(200)
-      expect(response).to redirect_to tithes_path
+      result = User.last
+      expect(result.email).to eq('admin@admin.com')
+      expect(session[:user_id]).to eq(result.id)
     end
   end
-end
 
+end

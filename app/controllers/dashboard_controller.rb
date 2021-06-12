@@ -1,4 +1,6 @@
 class DashboardController < ApplicationController
+	before_action :authenticate_user!
+
   def index
   	@totalmembers = Membership.count
   	@memberfemale = Membership.where(gender: 'Female').count

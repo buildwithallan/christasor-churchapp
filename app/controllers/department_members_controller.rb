@@ -1,4 +1,6 @@
 class DepartmentMembersController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
   	 @q = DepartmentMember.ransack(params[:q])
      @pagy, @department_members = pagy(@q.result(distinct: true))
