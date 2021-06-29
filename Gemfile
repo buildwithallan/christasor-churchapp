@@ -62,5 +62,4 @@ gem 'chartkick', '~> 4.0', '>= 4.0.3'
 
 gem 'friendly_id', '~> 5.4', '>= 5.4.2'
 
-gem 'pundit', '~> 2.1'
 
