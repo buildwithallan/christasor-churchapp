@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
  def authenticate_user!
  	redirect_to login_path, alert: "You must be Logged in to do that" if Current.user.nil?
  end
+
 end
 	
 

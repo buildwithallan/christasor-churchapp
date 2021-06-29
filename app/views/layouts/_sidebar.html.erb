@@ -37,6 +37,8 @@
               
             </div>
 
+            <% if Current.user.user_type == 'admin' %>
+
             <div class="relative" x-data="{ isOpen: false }">
               <button  @click="isOpen = true" class="w-full focus:outline-none">
                 <span class="flex p-2 border-r-4 hover:border-blue-500  hover:bg-gray-100 text-gray-500 hover:text-blue-700">
@@ -69,6 +71,7 @@
                 </li>
               </ul>  
             </div>
+            <% end %>
 
             <div class="relative" x-data="{ isOpen: false }">
               <button  @click="isOpen = true" class="w-full focus:outline-none">
@@ -87,9 +90,11 @@
                     <span class="flex p-2 hover:bg-gray-200 border-r-4 hover:border-blue-500">        
                        <%= link_to "Group", groups_path, class: 'ml-14' %>
                     </span>
-                    <span class="flex p-2 hover:bg-gray-200 border-r-4 hover:border-blue-500">        
-                        <%= link_to "Users", users_path, class: 'ml-14' %>
-                    </span>           
+
+                    <% if Current.user.user_type == 'admin' %>
+                    <span class="flex p-2 hover:bg-gray-200 border-r-4 hover:border-blue-500">   <%= link_to "Users", users_path, class: 'ml-14' %>
+                    </span>      
+                    <% end %>     
                 </li>
               </ul>  
             </div>
