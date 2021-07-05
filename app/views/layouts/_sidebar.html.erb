@@ -37,7 +37,7 @@
               
             </div>
 
-            <% if Current.user.user_type == 'admin' %>
+            <% if Current.user.user_type == 'superadmin' %>
 
             <div class="relative" x-data="{ isOpen: false }">
               <button  @click="isOpen = true" class="w-full focus:outline-none">
