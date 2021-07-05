@@ -4,7 +4,7 @@
 <div class="mt-8">	
 	<%= form_for @member_group do |f| %>
 	  <% if @member_group.errors.any? %>
-        <div class="px-4 py-3 leading-normal text-red-700 bg-red-100 rounded-lg" role="alert">
+        <div class="max-w-lg mx-auto px-4 py-3 leading-normal text-red-700 bg-red-100 rounded-lg" role="alert">
          <% @member_group.errors.full_messages.each do |message|%>
            <div class="text-center"><%= message %></div>
        <% end %>
