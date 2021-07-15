@@ -21,6 +21,6 @@ Rails.application.routes.draw do
   resources :expenses
   resources :pledges
   resources :incomes
-  resources :users 
+  resources :users
   
 end

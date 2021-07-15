@@ -91,7 +91,7 @@
                        <%= link_to "Group", groups_path, class: 'ml-14' %>
                     </span>
 
-                    <% if Current.user.user_type == 'admin' %>
+                    <% if Current.user.user_type == 'superadmin' %>
                     <span class="flex p-2 hover:bg-gray-200 border-r-4 hover:border-blue-500">   <%= link_to "Users", users_path, class: 'ml-14' %>
                     </span>      
                     <% end %>     

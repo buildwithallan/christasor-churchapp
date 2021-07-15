@@ -1,5 +1,6 @@
 class MembershipsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_membership, only: [:show, :edit, :update, :destroy]
   
   def index
     @q = Membership.ransack(params[:q])
@@ -21,15 +22,12 @@ class MembershipsController < ApplicationController
   end
 
   def show
-  	@membership = Membership.friendly.find(params[:id])
   end
 
   def edit
-  	@membership = Membership.friendly.find(params[:id])
   end
 
   def update
-  	@membership = Membership.friendly.find(params[:id])
 
   	if @membership.update(membership_params)
   	 redirect_to membership_path, notice: "Member updated successfully"
@@ -39,13 +37,15 @@ class MembershipsController < ApplicationController
   end
 
   def destroy
-  	@membership = Membership.friendly.find(params[:id])
-
   	@membership.destroy
-  	redirect_to memberships_path
+  	redirect_to memberships_path, notice: "Member updated successfully"
   end
 
   private
+
+  def set_membership
+    @membership = Membership.friendly.find(params[:id])
+  end
 
   def membership_params
   	params.require(:membership).permit(:image, :member_id, :firstname, :lastname, :othernames, :title, :position, :gender, :date_of_birth, :primary_phone_number, :other_phone_number, :email, :hometown, :residential_location, :occupation, :marital_status, :work_place, :year_joining_church)	

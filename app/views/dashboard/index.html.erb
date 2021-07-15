@@ -33,11 +33,11 @@
 		    	<h3 class="mt-10 text-center">Percentage</h3>
 		    	<div class="flex">
 		    		<div class="bg-red-500 px-4 h-4 w-10 mx-3 mt-2"></div>
-		    	     <%=  number_to_percentage @malepercent %>
+		    	     <%=  (number_to_percentage @malepercent).to_f %>
 		    	</div>
 			    <div class="flex">
 			        <div class="bg-blue-500 px-4 h-4 w-10 mx-3 mt-2"></div>
-			        <%=  number_to_percentage @femalepercent %>
+			        <%=  (number_to_percentage @femalepercent).to_f %>
 			    </div> 
 		       </div>
 		    </div>
