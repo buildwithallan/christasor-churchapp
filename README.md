@@ -1,24 +1,63 @@
-# README
+# christAsor
+A church management application for administrators to capture detailed member information, leaders, and church operations for effective engagement.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Features
+- Membership
+- Department
+- Group
+- Finance
 
-Things you may want to cover:
+## Technologies used
+- ruby 2.6.6
+- rails 6.0.3.4
 
-* Ruby version
+## How to run the project locally
+### Configuration
+#### Clone this repository
+```
+$ git clone https://github.com/buildwithallan/christasor-churchapp.git
+```
 
-* System dependencies
+#### Navigate to the project directory
+```
+$ cd christasor-churchapp
+```
+#### Install dependencies from the gemfile
+```
+$ bundle install
+```
 
-* Configuration
+### Database creation and initialization
 
-* Database creation
+#### Create database
+```
+$ rails db:create
+```
 
-* Database initialization
+#### Migrate database
+```
+$ rails db:migrate
+```
 
-* How to run the test suite
+### Running the server
+You can start the server by running the command below:
+```
+$ rails s
+```
+### How to run the test suit
+```
+$ rspec
+```
+### Login Credentials
+#### Login as superadmin
+email: superadmin@superadmin.com
 
-* Services (job queues, cache servers, search engines, etc.)
+password: superadmin1234
 
-* Deployment instructions
+#### Login as an admin
+email: admin@admin.com
 
-* ...
+password: admin1234
+
+## Deployed Project
+You can find the deployed project at http://christasor-churchapp.herokuapp.com/
