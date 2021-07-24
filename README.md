@@ -8,8 +8,9 @@ A church management application for administrators to capture detailed member in
 - Finance
 
 ## Technologies used
-- ruby 2.6.6
-- rails 6.0.3.4
+- Ruby On Rails
+- Alpine.js
+- Tailwindcss
 
 ## How to run the project locally
 ### Configuration
@@ -48,7 +49,19 @@ $ rails s
 ```
 $ rspec
 ```
+### Functions of Accounts
+
+#### Superadmin
+- Only superadmin have access to the finance feature
+- Create a user account
+
+#### Administrator(Superadmin & Admin)
+- Create and manage church members
+- Create and manage Groups
+- Create and manage Departments
+
 ### Login Credentials
+
 #### Login as superadmin
 email: superadmin@superadmin.com
 
