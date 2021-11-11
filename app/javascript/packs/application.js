@@ -4,14 +4,16 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-require("turbolinks").start()
+//require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("chartkick/chart.js")
 
-
+import 'turbolinks'
 import '../css/application.css'
 import 'stylesheets/application'
+
+import ("custom/navbar");
 
 // Add Choices Dropdown
 const Choices = require('choices.js')

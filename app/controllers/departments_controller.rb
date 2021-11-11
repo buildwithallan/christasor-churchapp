@@ -3,7 +3,7 @@ class DepartmentsController < ApplicationController
   before_action :set_department, only: [:edit, :update, :destroy]
   
   def index
-  	@pagy, @departments = pagy(Department.all)
+  	@pagy, @departments = pagy(Department.all, items: 10)
   end
 
   def new

@@ -2,15 +2,15 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# This file is the source Rails uses to define your schema when running `rails
-# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
 # be faster and is potentially less error prone than running all of your
 # migrations from scratch. Old migrations may fail to apply correctly if those
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_05_201645) do
+ActiveRecord::Schema.define(version: 2021_11_08_191709) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -27,10 +27,17 @@ ActiveRecord::Schema.define(version: 2021_05_05_201645) do
     t.string "filename", null: false
     t.string "content_type"
     t.text "metadata"
-    t.bigint "byte_size", null: false
+    t.integer "byte_size", null: false
     t.string "checksum", null: false
     t.datetime "created_at", null: false
+    t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
   create_table "contributions", force: :cascade do |t|
@@ -43,7 +50,7 @@ ActiveRecord::Schema.define(version: 2021_05_05_201645) do
 
   create_table "department_members", force: :cascade do |t|
     t.string "name"
-    t.integer "department_id", null: false
+    t.bigint "department_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["department_id"], name: "index_department_members_on_department_id"
@@ -92,7 +99,7 @@ ActiveRecord::Schema.define(version: 2021_05_05_201645) do
 
   create_table "member_groups", force: :cascade do |t|
     t.string "fullname"
-    t.integer "group_id", null: false
+    t.bigint "group_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["group_id"], name: "index_member_groups_on_group_id"
@@ -131,7 +138,7 @@ ActiveRecord::Schema.define(version: 2021_05_05_201645) do
 
   create_table "pledges", force: :cascade do |t|
     t.string "membername"
-    t.float "amount"
+    t.decimal "amount"
     t.string "payment"
     t.text "remarks"
     t.datetime "created_at", precision: 6, null: false
@@ -139,7 +146,7 @@ ActiveRecord::Schema.define(version: 2021_05_05_201645) do
   end
 
   create_table "tithes", force: :cascade do |t|
-    t.integer "membership_id", null: false
+    t.bigint "membership_id", null: false
     t.decimal "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -155,6 +162,7 @@ ActiveRecord::Schema.define(version: 2021_05_05_201645) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "department_members", "departments"
   add_foreign_key "member_groups", "groups"
   add_foreign_key "tithes", "memberships"

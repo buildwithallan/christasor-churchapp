@@ -4,7 +4,7 @@ class MemberGroupsController < ApplicationController
   
   def index
      @q = MemberGroup.ransack(params[:q])
-     @pagy, @member_groups = pagy(@q.result(distinct: true))
+     @pagy, @member_groups = pagy(@q.result(distinct: true), items: 10)
   end
 
   def new

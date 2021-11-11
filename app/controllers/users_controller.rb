@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+ 
   before_action :set_user, only: [:edit, :update, :destroy]
   
   def index
-  	@users = User.all
+  	@pagy, @users = pagy(User.all, items: 10)
   end
 
   def new

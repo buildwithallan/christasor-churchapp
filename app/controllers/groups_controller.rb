@@ -3,7 +3,7 @@ class GroupsController < ApplicationController
   before_action :set_group, only: [:edit, :update, :destroy]
   
   def index
-  	@pagy, @groups = pagy(Group.all)
+  	@pagy, @groups = pagy(Group.all, items: 10)
   end
 
   def new
