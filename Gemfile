@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'dotenv-rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
   gem 'factory_bot_rails'
@@ -65,4 +65,4 @@ gem 'chartkick', '~> 4.0', '>= 4.0.3'
 
 gem 'friendly_id', '~> 5.4', '>= 5.4.2'
 
-
+gem 'cloudinary', '~> 1.21'
