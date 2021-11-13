@@ -9,6 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require("chartkick/chart.js")
 
+
 import 'turbolinks'
 import '../css/application.css'
 import 'stylesheets/application'

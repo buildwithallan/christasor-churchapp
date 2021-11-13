@@ -36,3 +36,4 @@ local:
 cloudinary:
   service: Cloudinary
   folder: christasor-churchapp
+ 
