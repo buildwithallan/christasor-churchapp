@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2021_11_08_191709) do
 
   create_table "contributions", force: :cascade do |t|
     t.string "name"
-    t.float "amount"
+    t.decimal "amount"
     t.string "purpose"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2021_11_08_191709) do
 
   create_table "department_members", force: :cascade do |t|
     t.string "name"
-    t.bigint "department_id", null: false
+    t.integer "department_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["department_id"], name: "index_department_members_on_department_id"
@@ -63,8 +63,8 @@ ActiveRecord::Schema.define(version: 2021_11_08_191709) do
   end
 
   create_table "expenses", force: :cascade do |t|
-    t.text "purpose"
-    t.float "amount"
+    t.string "purpose"
+    t.decimal "amount"
     t.datetime "expense_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -88,10 +88,10 @@ ActiveRecord::Schema.define(version: 2021_11_08_191709) do
   end
 
   create_table "incomes", force: :cascade do |t|
-    t.float "totaltithe"
-    t.float "totaloffertory"
-    t.float "totalcontribution"
-    t.float "totalpledge"
+    t.decimal "totaltithe"
+    t.decimal "totaloffertory"
+    t.decimal "totalcontribution"
+    t.decimal "totalpledge"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "month_year"
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 2021_11_08_191709) do
 
   create_table "member_groups", force: :cascade do |t|
     t.string "fullname"
-    t.bigint "group_id", null: false
+    t.integer "group_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["group_id"], name: "index_member_groups_on_group_id"
@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(version: 2021_11_08_191709) do
   end
 
   create_table "offertories", force: :cascade do |t|
-    t.float "amount"
+    t.decimal "amount"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(version: 2021_11_08_191709) do
   end
 
   create_table "tithes", force: :cascade do |t|
-    t.bigint "membership_id", null: false
+    t.integer "membership_id", null: false
     t.decimal "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

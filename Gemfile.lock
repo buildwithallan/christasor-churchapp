@@ -54,6 +54,7 @@ GEM
       activesupport (= 6.1.4.1)
       marcel (~> 1.0.0)
       mini_mime (>= 1.1.0)
+    activestorage-cloudinary-service (0.2.3)
     activesupport (6.1.4.1)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
@@ -260,6 +261,7 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  activestorage-cloudinary-service
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
   byebug

@@ -64,5 +64,5 @@ gem 'chartkick', '~> 4.0', '>= 4.0.3'
 
 gem 'friendly_id', '~> 5.4', '>= 5.4.2'
 
-
+gem 'activestorage-cloudinary-service'
 gem 'cloudinary', '~> 1.21'
