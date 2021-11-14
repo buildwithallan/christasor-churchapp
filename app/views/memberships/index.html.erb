@@ -30,7 +30,7 @@
 		<% @memberships.each do |membership| %>
 		<tr class="border-b border-gray-200 hover:bg-gray-100">
 			<td class="px-3"><%= membership.id %></td>
-			<td class="px-3"><%= cl_image_tag(membership.image, :size => '50x50') if membership.image.attached? %></td>
+			<td class="px-3"><%= image_tag(membership.image, :size => '50x50') if membership.image.attached? %></td>
 			<td class="px-3"><%= membership.firstname %> <%= membership.lastname %> <%= membership.othernames %></td>
 			<td class="px-3"><%= membership.member_id %></td>
 			<td class="px-3"><%= membership.position %></td>
