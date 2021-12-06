@@ -4,7 +4,8 @@ class MemberGroupsController < ApplicationController
   
   def index
      @q = MemberGroup.ransack(params[:q])
-     @pagy, @member_groups = pagy(@q.result(distinct: true), items: 10)
+     @pagy, @member_groups = pagy(@q.result.includes(:group), items: 10)
+     
   end
 
   def new
@@ -12,7 +13,7 @@ class MemberGroupsController < ApplicationController
   end
 
   def create
-  	@member_group = MemberGroup.create(membergroup_params)
+  	@member_group = MemberGroup.new(membergroup_params)
   	if @member_group.save
   		redirect_to member_groups_path, notice: "Group Member added successfully"
   	else

@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
   end
 
   def create
-  	@group = Group.create(group_params)
+  	@group = Group.new(group_params)
 
   	if @group.save
   		redirect_to groups_path, notice: "Group #{@group.group_name} added successfully"

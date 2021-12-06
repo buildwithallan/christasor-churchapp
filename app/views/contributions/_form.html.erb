@@ -2,7 +2,7 @@
 <p class="text-sm">Contribution > Add New Contribution</p> 
 
 <div class="mt-8">
-	<%= form_for @contribution do |f| %>
+	<%= form_with model: @contribution, local: true do |f| %>
         <% if @contribution.errors.any? %>
          <div class="max-w-lg mx-auto px-4 py-3 leading-normal text-red-700 bg-red-100 rounded-lg" role="alert">
           <% @contribution.errors.full_messages.each do |message|%>
@@ -26,6 +26,12 @@
 		<div>
 		   <%= f.label :purpose %>
 		   <%= f.text_field :purpose, class: 'border border-gray-300 block w-full rounded px-2 py-1 focus:outline-none focus:border-blue-100 mb-2' %>
+		</div>
+
+
+		<div>
+		   <%= f.label :date, "Date" %>
+	       <%= f.date_field :contribution_date, class: 'border border-gray-300 block w-full rounded px-2 py-1 focus:outline-none focus:border-blue-100 mb-2'  %>
 		</div>
 
 		<div>

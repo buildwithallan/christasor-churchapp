@@ -2,7 +2,7 @@
 <p class="text-sm">Department > Add New Department</p> 
 
 <div class="mt-8">
-    <%= form_for @department do |f| %>
+    <%= form_with model: @department, local: true do |f| %>
         <% if @department.errors.any? %>
          <div class="max-w-lg mx-auto px-4 py-3 w-50 text-red-700 bg-red-100 rounded-lg" role="alert">
           <% @department.errors.full_messages.each do |message|%>

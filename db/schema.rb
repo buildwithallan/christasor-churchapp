@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_14_041622) do
+ActiveRecord::Schema.define(version: 2021_12_03_133509) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2021_11_14_041622) do
     t.string "purpose"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "contribution_date"
   end
 
   create_table "department_members", force: :cascade do |t|
@@ -63,7 +64,7 @@ ActiveRecord::Schema.define(version: 2021_11_14_041622) do
   end
 
   create_table "expenses", force: :cascade do |t|
-    t.string "purpose"
+    t.text "purpose"
     t.decimal "amount"
     t.datetime "expense_date"
     t.datetime "created_at", precision: 6, null: false
@@ -134,6 +135,7 @@ ActiveRecord::Schema.define(version: 2021_11_14_041622) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "offertory_date"
   end
 
   create_table "pledges", force: :cascade do |t|
@@ -143,6 +145,7 @@ ActiveRecord::Schema.define(version: 2021_11_14_041622) do
     t.text "remarks"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "pledge_date"
   end
 
   create_table "tithes", force: :cascade do |t|
@@ -150,6 +153,7 @@ ActiveRecord::Schema.define(version: 2021_11_14_041622) do
     t.decimal "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "tithe_date"
     t.index ["membership_id"], name: "index_tithes_on_membership_id"
   end
 
@@ -161,6 +165,9 @@ ActiveRecord::Schema.define(version: 2021_11_14_041622) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "department_members", "departments"
   add_foreign_key "member_groups", "groups"
   add_foreign_key "tithes", "memberships"
 end

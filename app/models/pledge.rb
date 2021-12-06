@@ -1,3 +1,4 @@
 class Pledge < ApplicationRecord
-	validates :membername, :amount, :payment, :remarks, presence: true
+	validates :membername, :payment, :pledge_date, :remarks, presence: true
+	validates :amount, presence: true, numericality: true
 end

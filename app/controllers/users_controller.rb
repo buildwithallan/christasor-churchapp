@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
- 
+  before_action :authenticate_user!
   before_action :set_user, only: [:edit, :update, :destroy]
   
   def index
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def create
-  	@user = User.create(user_params)
+  	@user = User.new(user_params)
 
   	if @user.save
   		session[:user_id] = @user.id
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to users_path, notice: "User destroyed succesfully"
+    redirect_to users_path, notice: "User destroyed successfully"
   end
 
   private

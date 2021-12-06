@@ -4,7 +4,7 @@ class MembershipsController < ApplicationController
   
   def index
     @q = Membership.ransack(params[:q])
-    @pagy, @memberships = pagy(@q.result(distinct: true), items: 20)
+    @pagy, @memberships = pagy(@q.result(distinct: true), items: 15)
   end
 
   def new
@@ -12,7 +12,7 @@ class MembershipsController < ApplicationController
   end
 
   def create
-  	@membership = Membership.create(membership_params)
+  	@membership = Membership.new(membership_params)
 
   	if @membership.save
   	  redirect_to memberships_path, notice: "Member added successfully"
@@ -38,7 +38,7 @@ class MembershipsController < ApplicationController
 
   def destroy
   	@membership.destroy
-  	redirect_to memberships_path, notice: "Member updated successfully"
+  	redirect_to memberships_path, notice: "Member deleted successfully"
   end
 
   private

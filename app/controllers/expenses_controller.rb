@@ -3,7 +3,7 @@ class ExpensesController < ApplicationController
   
   def index
      @q = Expense.ransack(params[:q])
-     @pagy, @expenses = pagy(@q.result(distinct: true))
+     @pagy, @expenses = pagy(@q.result(distinct: true), items: 10)
   end
 
   def new
@@ -11,7 +11,7 @@ class ExpensesController < ApplicationController
   end
 
   def create
-  	@expense = Expense.create(expense_params)
+  	@expense = Expense.new(expense_params)
 
   	if @expense.save
   	  redirect_to expenses_path, notice: "Expense added successfully"

@@ -7,58 +7,83 @@ before do
   post login_url, params: {email: user.email, password: user.password}
 end
 
+let!(:group){create(:group)}
+
+let(:valid_params) do{
+  member_group: {
+    fullname: 'Allan Aikins', 
+    group_id: group.id
+  }
+}
+end
+
+let(:invalid_params) do{
+  member_group: {
+    fullname: '', 
+    group_id: group.id
+  }
+}
+end
+
+
   describe "GET /index" do
-    it "returns http success" do
-      get "/department_members"
-      expect(response).to have_http_status(:success)
+    let(:member_group){create(:member_group)}
+
+    it "displays all group members created" do
+      get member_groups_url
+      expect(response).to be_successful
     end
   end
 
   describe "GET /new" do
-    it "returns http success" do
-      get "/department_members/new"
-      expect(response).to have_http_status(:success)
+    it "renders a successful response" do
+      get new_member_group_url
+      expect(response).to be_successful
     end
   end
 
-  describe "POST /department_members" do
-  
-    let(:department){create(:department)}
+  describe "GET /edit" do
+    let(:member_group){create(:member_group)}
 
-    it "creates a new department member" do
-      post '/department_members', params: {department_member: {name: 'Allan Aikins', department_id: department.id}}
-
-      result = DepartmentMember.last
-      expect(result.name).to eq('Allan Aikins')
-      expect(response).to redirect_to department_members_path
+    it "renders a successful response" do
+      get edit_member_group_url(member_group)
+      expect(response).to be_successful
     end
   end
 
+   describe "PATCH /update" do
+   let(:member_group){create(:member_group)}
 
-  describe "GET /index" do
-    it "returns http success" do
-      get "/member_groups"
-      expect(response).to have_http_status(:success)
+    it "updates a member" do
+      patch member_group_url(member_group), params: valid_params
+      expect(response).to redirect_to member_groups_url
+    end
+     it "doesn't update a member" do
+      patch member_group_url(member_group), params: invalid_params
+      expect(response).not_to redirect_to member_groups_url
     end
   end
 
-  describe "GET /new" do
-    it "returns http success" do
-      get "/member_groups/new"
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "POST /member_groups" do
-  
-    let(:group){create(:group)}
-
+  describe "POST /member_groups" do  
     it "creates a new membergroup" do
-      post '/member_groups', params: {member_group: {fullname: 'Allan Aikins', group_id: group.id}}
+      post member_groups_url, params: valid_params
 
       result = MemberGroup.last
       expect(result.fullname).to eq('Allan Aikins')
-      expect(response).to redirect_to member_groups_path
+      expect(response).to redirect_to member_groups_url
+    end
+    it "doesn't create a new group member" do
+      post member_groups_url, params: invalid_params
+      expect(response).not_to redirect_to member_groups_url
+    end
+  end
+
+  describe "DELETE /destroy" do
+   let(:member_group){create(:member_group)}
+   
+    it "deletes a group member" do
+      delete member_group_url(member_group)
+      expect(response).to redirect_to member_groups_url
     end
   end
 end

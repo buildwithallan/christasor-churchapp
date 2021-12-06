@@ -7,29 +7,55 @@ before do
   post login_url, params: {email: user.email, password: user.password}
 end
 
-  describe "GET /new" do
-    it "returns http success" do
-      get "/contributions/new"
-      expect(response).to have_http_status(:success)
+let(:valid_params) do{
+  contribution: {
+    name: "Allan Aikins", 
+    amount: 200.0, 
+    purpose: "harvest",
+    contribution_date: "2021/11/21"
+  }
+}
+end
+
+let(:invalid_params) do{
+  contribution: {
+    name: "Allan Aikins", 
+    amount: nil, 
+    purpose: "harvest",
+    contribution_date: "2021/11/21"
+  }
+}
+end
+
+  describe "GET /index" do
+   let(:contributions){create(:contributions)}
+
+    it "will get all contributions created" do
+      get contributions_url
+      expect(response).to be_successful
     end
   end
 
-  describe "GET /index" do
-    it "will get all contributions created" do
-      get "/contributions"
-      expect(response).to have_http_status(:success)
+  describe "GET /new" do
+    it "renders a successful response" do
+      get new_contribution_url
+      expect(response).to be_successful
     end
   end
+
 
   describe "POST /contributions" do
 
     it "creates a new contribution" do
-      post "/contributions", params: {contribution: {name: "Allan Aikins", amount: 200.0, purpose: "harvest"}}
+      post contributions_url, params: valid_params
 
       result = Contribution.last
       expect(result.name).to eq("Allan Aikins")
-      expect(response).to redirect_to contributions_path
+      expect(response).to redirect_to contributions_url
     end 
+    it "doesn't create a new contribution" do
+       post contributions_url, params: invalid_params
+       expect(response).not_to redirect_to contributions_url
+    end
   end
-
 end

@@ -7,29 +7,52 @@ before do
   post login_url, params: {email: user.email, password: user.password}
 end
 
+ let!(:membership){create(:membership)}
+
+ let(:valid_params) do {
+   tithe: {
+    membership_id: membership.id, 
+    amount: 200.00,
+    tithe_date: "2021/11/23"
+  }
+ }
+end
+
+let(:invalid_params) do {
+   tithe: {
+    membership_id: nil, 
+    amount: 200.00,
+    tithe_date: "2021/11/23"
+  }
+ }
+end
   describe "GET /index" do
-    it "returns http success" do
-      get "/tithes"
-      expect(response).to have_http_status(:success)
+   let(:tithe){create(:tithe)}
+
+    it "displays all tithes created" do
+      get tithes_url
+      expect(response).to be_successful
     end
   end
 
   describe "GET /new" do
-    it "returns http success" do
-      get "/tithes/new"
-      expect(response).to have_http_status(:success)
+    it "renders a successful response" do
+      get new_tithe_url
+      expect(response).to be_successful
     end
   end
 
   describe "POST /tithes" do
-    let(:membership){create(:membership)}
+    it "creates a new tithe" do
+      post tithes_url, params: valid_params
 
-    it "creates a tithe" do
-      post "/tithes", params: {tithe: {membership_id: membership.id, amount: 200}}
-
-      result = Tithe.last
-      expect(result.amount).to eq(200)
-      expect(response).to redirect_to tithes_path
+      result = Tithe.first
+      expect(result.amount).to eq(200.00)
+      expect(response).to redirect_to tithes_url
+    end
+    it "doesn't create a new tithe" do
+      post tithes_url, params: invalid_params
+      expect(response).not_to redirect_to tithes_url
     end
   end
 end

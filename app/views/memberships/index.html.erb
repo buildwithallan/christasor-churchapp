@@ -3,7 +3,7 @@
 </div>
 
 <%= search_form_for @q do |f| %>
-	<div class="flex float-right mb-2">
+	<div class="flex float-right mb-2 mt-3">
       <%= f.search_field :firstname_or_lastname_or_member_id_or_position_cont, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded-l',  placeholder: 'Search...' %>
   
        <%= button_tag(type: "Search", class: "border  bg-white rounded-r hover:border-gray-700") do %>
@@ -35,7 +35,7 @@
 			<td class="px-3"><%= membership.member_id %></td>
 			<td class="px-3"><%= membership.position %></td>
 			<td class="px-3"><%= membership.primary_phone_number %></td>
-			<td class="flex items-center px-3 mt-2"><%= link_to membership_path(membership.slug) do %>
+			<td class="flex px-3 mt-2"><%= link_to membership_path(membership.slug) do %>
 				<svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
 				<% end %>
 			

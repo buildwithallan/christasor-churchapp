@@ -4,7 +4,7 @@ class DepartmentMembersController < ApplicationController
   
   def index
   	 @q = DepartmentMember.ransack(params[:q])
-     @pagy, @department_members = pagy(@q.result(distinct: true))
+     @pagy, @department_members = pagy(@q.result(distinct: true), items: 10)
   end
 
   def new
@@ -12,7 +12,7 @@ class DepartmentMembersController < ApplicationController
   end
 
   def create
-  	@department_member = DepartmentMember.create(departmentmember_params)
+  	@department_member = DepartmentMember.new(departmentmember_params)
 
   	if @department_member.save
   		redirect_to department_members_path, notice: "Department Member added successfully"

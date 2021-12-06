@@ -5,15 +5,15 @@
 <%= search_form_for @q do |f| %>
 <div class="space-y-2">
   <%= f.search_field :membername_or_payment_or_remarks_cont, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded' %>
-  <%= f.date_field :created_at_gteq, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded' %>
-  <%= f.date_field :created_at_lteq, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded' %>
+  <%= f.date_field :pledge_date_gteq, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded' %>
+  <%= f.date_field :pledge_date_lteq, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded' %>
    <%= button_tag(type: "Search", class: "border  bg-blue-400 text-white p-1 rounded hover:border-gray-700") do %>
    		Search
    <% end %>
 <% end %>
 </div>
 
-<div class="w-full shadow rounded-lg overflow-hidden mt-5 border-t-2 border-gray-500">
+<div class="w-full shadow rounded-lg overflow-auto mt-5 border-t-2 border-gray-500">
 	<table class="w-full bg-white">
 	<thead>
 		<tr class="border-b-2 border-gray-200">
@@ -22,7 +22,7 @@
 		   <th class="text-left px-3 py-2">Amount</th>
 		   <th class="text-left px-3 py-2">Payment Status</th>
 		   <th class="text-left px-3 py-2">Remarks</th>
-		   <th class="text-left px-3 py-2">Date</th>
+		   <th class="text-left px-3 py-2">Date Pledged</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -33,10 +33,12 @@
 			<td class="px-3 py-1">GHc<%= pledge.amount %></td>
 			<td class="px-3 py-1"><%= pledge.payment %></td>
 			<td class="px-3 py-1"><%= pledge.remarks %></td>
-			<td class="px-3 py-1"><%= pledge.created_at.strftime('%A, %d %b %Y %l:%M %p')%></td>
+			<td class="px-3 py-1"><%= pledge.pledge_date.strftime('%A, %d %b %Y')%></td>
 		  </tr>
 		<% end %>
 	</tbody>
+
+	<% if @pledges.exists? %>
 	<tfoot>
 		<tr>
 			<th></th>
@@ -44,6 +46,7 @@
 			<th colspan="3" class="text-left px-3 py-2">GHc <%= @pledges.sum(:amount) %></th>
 		</tr>
 	</tfoot>
+	<% end %>
 </table>
 </div>
 

@@ -1,9 +1,18 @@
 <div class="mt-5">
-    <%= link_to "Add Group Member", new_member_group_path, class: 'bg-blue-500 p-2 text-white hover:bg-blue-600 ml-40' %>
+    <%= link_to "Add Group Member", new_member_group_path, class: 'bg-blue-500 p-2 text-white hover:bg-blue-600' %>
+</div>
+
+<%= search_form_for @q do |f| %>
+<div class="flex float-right mb-2 mt-3">
+  <%= f.search_field :fullname_or_group_group_name_cont, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded-l',  placeholder: 'Search...' %>
+   <%= button_tag(type: "Search", class: "border  bg-white rounded-r hover:border-gray-700") do %>
+ <svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+  <% end %>
+<% end %>
 </div>
 
 
-<div class="max-w-lg shadow rounded-lg overflow-auto mt-5 border-t-2 border-gray-500 mx-auto">
+<div class="w-full shadow rounded-lg overflow-auto mt-5 border-t-2 border-gray-500">
    <table class="w-full bg-white">
 	<thead>
 		<tr class="border-b-2 border-gray-200">
@@ -21,11 +30,11 @@
 			<td class="px-3 py-1"><%= membergroup.fullname %></td>
 			<td class="px-3 py-1"><%= membergroup.group.group_name %></td>
 			<td class="flex px-3 mt-2"><%= link_to edit_member_group_path(membergroup.id) do %>
-				<svg class="ml-15 w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+				<svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
 				<% end %>
 			
 			    <%= button_to member_group_path(membergroup.id), method: :delete, data: {confirm: "Are you sure you want to delete?"} do %>
-				 <svg class="mr-10 w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+				 <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
 				<% end %>
 			</td>
 		</tr>
@@ -34,7 +43,7 @@
 </table>
 </div>
 
-<div class="mt-2 ml-40">
+<div class="mt-2">
 	<%= pagy_nav(@pagy).html_safe %>
 </div>
 

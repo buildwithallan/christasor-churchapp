@@ -7,10 +7,53 @@ before do
   post login_url, params: {email: user.email, password: user.password}
 end
 
+let(:valid_params) do {
+ income: {
+ 	totaltithe: 15000,
+ 	totalpledge: 3000,
+ 	totalcontribution: 1000,
+ 	totaloffertory: 12000,
+ 	month_year: "2021/09/30"
+ }
+}
+end
+
+let(:invalid_params) do {
+ income: {
+ 	totaltithe: nil,
+ 	totalpledge: 3000,
+ 	totalcontribution: 1000,
+ 	totaloffertory: 12000,
+ 	month_year: "2021/09/30"
+ }
+}
+end
+
   describe "GET /index" do
-    it "returns http success" do
-      get "/incomes"
-      expect(response).to have_http_status(:success)
+    it "displays all incomes created" do
+      get incomes_url
+      expect(response).to be_successful
+    end
+  end
+
+   describe "GET /new" do
+    it "renders a successful response" do
+      get new_income_url
+      expect(response).to be_successful
+    end
+  end
+
+  describe "POST /incomes" do
+    it "creates a new income" do
+      post incomes_url, params: valid_params
+
+      result = Income.first
+      expect(result.totaltithe).to eq(15000)
+      expect(response).to redirect_to incomes_url
+    end
+    it "doesn't create a new income" do
+      post incomes_url, params: invalid_params
+      expect(response).not_to redirect_to incomes_url
     end
   end
 

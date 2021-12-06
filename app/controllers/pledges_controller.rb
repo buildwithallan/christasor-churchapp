@@ -3,7 +3,7 @@ class PledgesController < ApplicationController
   
   def index
   	@q = Pledge.ransack(params[:q])
-    @pagy, @pledges = pagy(@q.result(distinct: true))
+    @pagy, @pledges = pagy(@q.result(distinct: true), items: 10)
   end
 
   def new
@@ -11,7 +11,7 @@ class PledgesController < ApplicationController
   end
 
   def create
-  	@pledge = Pledge.create(pledge_params)
+  	@pledge = Pledge.new(pledge_params)
 
   	if @pledge.save
   		redirect_to pledges_path, notice: "Pledge added successfully"
@@ -23,6 +23,6 @@ class PledgesController < ApplicationController
   private
 
   def pledge_params
-  	params.require(:pledge).permit(:membername, :amount, :payment, :remarks)
+  	params.require(:pledge).permit(:membername, :amount, :payment, :remarks, :pledge_date)
   end
 end

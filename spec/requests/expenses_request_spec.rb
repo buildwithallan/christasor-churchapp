@@ -7,27 +7,49 @@ before do
   post login_url, params: {email: user.email, password: user.password}
 end
 
-  describe "GET /new" do
-    it "returns http success" do
-      get "/expenses/new"
-      expect(response).to have_http_status(:success)
-    end
-  end
+let(:valid_params) do{
+  expense: {
+    purpose: "Electricity", 
+    amount: 150, 
+    expense_date: "2021/11/21"
+  }
+}
+end
+
+let(:invalid_params) do{
+  expense: {
+    purpose: "", 
+    amount: 150, 
+    expense_date: "2021/11/21"
+  }
+}
+end
 
   describe "GET /index" do
     it "displays all expenses" do
-      get "/expenses"
-      expect(response).to have_http_status(:success)
+      get expenses_url
+      expect(response).to be_successful
+    end
+  end
+
+   describe "GET /new" do
+    it "renders a successful response" do
+      get new_expense_url
+      expect(response).to be_successful
     end
   end
 
   describe "POST /expenses" do
-    it "creates expenses" do
-      post "/expenses", params: {expense: {purpose: "Electricity", amount: 150, expense_date: "2021-01-27 13:16:59"}}
+    it "creates a new expenses" do
+      post expenses_url, params: valid_params
 
-      result = Expense.last
+      result = Expense.first
       expect(result.purpose).to eq('Electricity')
-      expect(response).to redirect_to expenses_path
+      expect(response).to redirect_to expenses_url
+    end
+    it "doesn't create a new expense" do
+      post expenses_url, params: invalid_params 
+      expect(response).not_to redirect_to expenses_url
     end
   end
 

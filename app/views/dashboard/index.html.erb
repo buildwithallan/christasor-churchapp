@@ -26,22 +26,22 @@
 <div class="mt-12">
 		<div class="bg-white max-w-lg rounded-t p-5 border-t-2 border-gray-500 mx-auto">
 			<h3 class="text-center">Gender</h3>
-		  	<div class="flex">
+		  	
 			  <div class="mt-8 mx-5">
 			   <%= pie_chart Membership.group(:gender).count %>	
 			  </div>
-		      <div class=" mt-12">
-		    	<h3 class="mt-10 text-center">Percentage</h3>
+		      <div class="mt-12">
+		    	<h3 class="mt-10">Percentage</h3>
 		    	<div class="flex">
 		    		<div class="bg-red-500 px-4 h-4 w-10 mx-3 mt-2"></div>
-		    	     <%=  (number_to_percentage @malepercent).to_f %>
+		    	     <%= (number_to_percentage @malepercent).to_f %>
 		    	</div>
 			    <div class="flex">
 			        <div class="bg-blue-500 px-4 h-4 w-10 mx-3 mt-2"></div>
-			        <%=  (number_to_percentage @femalepercent).to_f %>
+			        <%= (number_to_percentage @femalepercent).to_f %>
 			    </div> 
 		       </div>
-		    </div>
+		   
         </div>
 </div>
 

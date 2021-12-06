@@ -6,23 +6,23 @@
 <%= search_form_for @q do |f| %>
 <div class="space-y-2">
   <%= f.search_field :membership_member_id_or_membership_firstname_or_membership_lastname_cont, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded'  %>
-  <%= f.date_field :created_at_gteq, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded'  %>
-  <%= f.date_field :created_at_lteq, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded'  %>
+  <%= f.date_field :tithe_date_gteq, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded'  %>
+  <%= f.date_field :tithe_date_lteq, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded'  %>
  <%= button_tag(type: "Search", class: "border  bg-blue-400 text-white p-1 rounded hover:border-gray-700") do %>
    		Search
    <% end %>
 <% end %>
 </div>
 
-<div class="w-full shadow rounded-lg overflow-hidden mt-5 border-t-2 border-gray-500">
+<div class="w-full shadow rounded-lg overflow-auto mt-5 border-t-2 border-gray-500">
 	<table class="w-full bg-white">
 	<thead>
 		<tr class="border-b-2 border-gray-200">
 			<th class="text-left px-3 py-2">Id</th>
 			<th class="text-left px-3 py-2">Member Id</th>
-			<th class="text-left px-3 py-2">MemberName</th>
+			<th class="text-left px-3 py-2">Name</th>
 			<th class="text-left px-3 py-2">Amount</th>
-			<th class="text-left px-3 py-2">Date and Time Paid</th>
+			<th class="text-left px-3 py-2">Date</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -33,10 +33,11 @@
 			<td class="px-3 py-1"><%= tithe.membership.member_id %></td>
 			<td class="px-3 py-1"><%= tithe.membership.firstname + " " + tithe.membership.lastname%></td>
 			<td class="px-3 py-1">GHc <%= tithe.amount %></td>
-			<td class="px-3 py-1"><%= tithe.created_at.strftime('%A, %d %b %Y %l:%M %p') %></td>
+			<td class="px-3 py-1"><%= tithe.tithe_date.strftime('%A, %d %b %Y') %></td>
 		</tr>
 		<% end %>
 	</tbody>
+	<% if @tithes.exists? %>
 	<tfoot>
 		<tr>
 			<th></th>
@@ -45,13 +46,13 @@
 			<th class="text-left px-3 py-2">GHc <%= @tithes.sum(:amount) %></th>
 		</tr>
 	</tfoot>
+	<% end %>
 </table>
 </div>
 
-
-
+<div class="mt-2">
 <%= pagy_nav(@pagy).html_safe %>
-
+</div>
 
 
 

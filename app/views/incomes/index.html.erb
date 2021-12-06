@@ -2,8 +2,18 @@
     <%= link_to "Add Income", new_income_path, class: 'bg-blue-500 p-2 text-white hover:bg-blue-600' %>
 </div>
 
+<%= search_form_for @q do |f| %>
+<div class="flex float-right mb-2 mt-3">
+  <%= f.search_field :month_year_cont, class: 'focus:outline-none focus:ring-1 focus:ring-gray-400 p-1 w-60 rounded-l',  placeholder: 'Search...' %>
+   <%= button_tag(type: "Search", class: "border  bg-white rounded-r hover:border-gray-700") do %>
+ <svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+  <% end %>
+<% end %>
+</div>
 
-<div class="w-full shadow rounded-lg overflow-hidden mt-5 border-t-2 border-gray-500">
+
+
+<div class="w-full shadow rounded-lg overflow-auto mt-5 border-t-2 border-gray-500">
 	<table class="w-full bg-white">
 	<thead>
 		<tr class="border-b-2 border-gray-200">
@@ -26,7 +36,7 @@
 			<td class="px-3 py-1"><%= income.totalcontribution %></td>
 			<td class="px-3 py-1"><%= income.totalpledge %></td>
 			<td class="px-3 py-1">GHc <%= income.total_income %></td>
-			<td class="px-3 py-1"><%= income.month_year%></td>
+			<td class="px-3 py-1"><%= income.month_year %></td>
 		</tr>
 		<% end %>
 	</tbody>

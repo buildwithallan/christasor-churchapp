@@ -3,7 +3,7 @@ class OffertoriesController < ApplicationController
   
    def index
      @q = Offertory.ransack(params[:q])
-     @pagy, @offertories =pagy(@q.result(distinct: true))
+     @pagy, @offertories =pagy(@q.result(distinct: true), items: 10)
   end
 
   def new
@@ -11,7 +11,7 @@ class OffertoriesController < ApplicationController
   end
 
   def create
-  	@offertory = Offertory.create(offertory_params)
+  	@offertory = Offertory.new(offertory_params)
 
   	if @offertory.save
   		redirect_to offertories_path, notice: "Offertory added successfully"
@@ -23,6 +23,6 @@ class OffertoriesController < ApplicationController
   private
 
   def offertory_params
-  	params.require(:offertory).permit(:amount, :description)
+  	params.require(:offertory).permit(:description, :amount, :offertory_date)
   end
 end

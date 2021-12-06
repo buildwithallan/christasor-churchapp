@@ -1,8 +1,9 @@
 FactoryBot.define do
   factory :pledge do
-    membername { "MyString" }
-    amount { 1.5 }
-    payment { "MyString" }
-    remarks { "MyText" }
+    membername { "Nana Appiah" }
+    amount { 150 }
+    payment { "Paid" }
+    remarks { "Pledge towards purchasing of bus" }
+    pledge_date {"2021/11/21"}
   end
 end

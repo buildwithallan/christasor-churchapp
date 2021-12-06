@@ -2,7 +2,7 @@
 <p class="text-sm">Expense > Add New Expense</p> 
 
 <div class="mt-8"> 
-	<%= form_for @expense do |f| %>
+	<%= form_with model: @expense, local: true do |f| %>
         <% if @expense.errors.any? %>
          <div class="max-w-lg mx-auto px-4 py-3 leading-normal text-red-700 bg-red-100 rounded-lg" role="alert">
           <% @expense.errors.full_messages.each do |message|%>

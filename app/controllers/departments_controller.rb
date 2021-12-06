@@ -11,7 +11,7 @@ class DepartmentsController < ApplicationController
   end
 
   def create
-  	@department = Department.create(department_params)
+  	@department = Department.new(department_params)
 
   	if @department.save
   	  redirect_to departments_path, notice: "Department #{@department.name} created successfully"

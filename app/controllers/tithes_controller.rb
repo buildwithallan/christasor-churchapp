@@ -3,7 +3,7 @@ class TithesController < ApplicationController
 
   def index
      @q = Tithe.ransack(params[:q])
-     @pagy, @tithes = pagy(@q.result.includes(:membership))
+     @pagy, @tithes = pagy(@q.result.includes(:membership), items: 10)
   end
 
   def new
@@ -11,7 +11,7 @@ class TithesController < ApplicationController
   end
 
   def create
-  	@tithe = Tithe.create(tithe_params)
+  	@tithe = Tithe.new(tithe_params)
 
   	if @tithe.save
   		redirect_to tithes_path, notice: "Tithe added successfully"
@@ -23,6 +23,6 @@ class TithesController < ApplicationController
   private
 
   def tithe_params
-  	params.require(:tithe).permit(:membership_id, :amount)
+  	params.require(:tithe).permit(:membership_id, :amount, :tithe_date)
   end
 end

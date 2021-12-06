@@ -4,7 +4,7 @@ class ContributionsController < ApplicationController
 
   def index
      @q = Contribution.ransack(params[:q])
-     @pagy, @contributions = pagy(@q.result(distinct: true))
+     @pagy, @contributions = pagy(@q.result(distinct: true), items: 10)
   end
 
   def new
@@ -12,7 +12,7 @@ class ContributionsController < ApplicationController
   end
 
   def create
-  	@contribution = Contribution.create(contribution_params)
+  	@contribution = Contribution.new(contribution_params)
 
   	if @contribution.save
   	  redirect_to contributions_path, notice: "Contribution added successfully"
@@ -24,6 +24,6 @@ class ContributionsController < ApplicationController
   private 
 
   def contribution_params
-  	params.require(:contribution).permit(:name, :amount, :purpose)
+  	params.require(:contribution).permit(:name, :amount, :purpose, :contribution_date)
   end
 end
