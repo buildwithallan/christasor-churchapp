@@ -11,6 +11,7 @@
     "chart.js": "^3.1.0",
     "chartkick": "^4.0.3",
     "choices.js": "^9.0.1",
+    "node-sass": "^7.0.1",
     "postcss": "^7",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "turbolinks": "^5.2.0"
