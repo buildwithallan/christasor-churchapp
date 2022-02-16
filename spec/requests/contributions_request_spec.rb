@@ -4,7 +4,7 @@ RSpec.describe "Contributions", type: :request do
 
 before do
   user = User.create!(email: "admin@admin.com", password: "password", user_type: "Admin")
-  post login_url, params: {email: user.email, password: user.password}
+  post login_path, params: {email: user.email, password: user.password}
 end
 
 let(:valid_params) do{
@@ -31,14 +31,14 @@ end
    let(:contributions){create(:contributions)}
 
     it "will get all contributions created" do
-      get contributions_url
+      get contributions_path
       expect(response).to be_successful
     end
   end
 
   describe "GET /new" do
     it "renders a successful response" do
-      get new_contribution_url
+      get new_contribution_path
       expect(response).to be_successful
     end
   end
@@ -47,15 +47,15 @@ end
   describe "POST /contributions" do
 
     it "creates a new contribution" do
-      post contributions_url, params: valid_params
+      post contributions_path, params: valid_params
 
       result = Contribution.last
       expect(result.name).to eq("Allan Aikins")
-      expect(response).to redirect_to contributions_url
+      expect(response).to redirect_to contributions_path
     end 
     it "doesn't create a new contribution" do
-       post contributions_url, params: invalid_params
-       expect(response).not_to redirect_to contributions_url
+       post contributions_path, params: invalid_params
+       expect(response).not_to redirect_to contributions_path
     end
   end
 end

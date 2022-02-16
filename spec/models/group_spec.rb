@@ -7,6 +7,6 @@ RSpec.describe Group, type: :model do
   end
 
   describe "association" do
-  	it {is_expected.to have_many(:member_groups)}
+  	it {is_expected.to have_many(:member_groups).dependent(:destroy)}
   end
 end

@@ -15,7 +15,7 @@ class ContributionsController < ApplicationController
   	@contribution = Contribution.new(contribution_params)
 
   	if @contribution.save
-  	  redirect_to contributions_path, notice: "Contribution added successfully"
+  	  redirect_to contributions_url, notice: "Contribution added successfully"
   	else
   		render :new
   	end

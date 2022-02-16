@@ -4,7 +4,7 @@ RSpec.describe "Pledges", type: :request do
 
 before do
   user = User.create!(email: "admin@admin.com", password: "password", user_type: "Admin")
-  post login_url, params: {email: user.email, password: user.password}
+  post login_path, params: {email: user.email, password: user.password}
 end
 
 let(:valid_params) do {
@@ -32,29 +32,29 @@ end
   describe "GET /index" do
    let(:pledge){create(:pledge)}
     it "displays all pledges created" do
-      get pledges_url
+      get pledges_path
       expect(response).to be_successful
     end
   end
 
    describe "GET /new" do
     it "renders a successful response" do
-      get new_pledge_url
+      get new_pledge_path
       expect(response).to be_successful
     end
   end
 
   describe "POST /pledges" do
     it "creates a new pledge" do
-      post pledges_url, params: valid_params
+      post pledges_path, params: valid_params
 
       result = Pledge.last
       expect(result.payment).to eq('paid')
-      expect(response).to redirect_to pledges_url
+      expect(response).to redirect_to pledges_path
     end
   end
   it "doesn't create a new pledge" do
-    post pledges_url, params: invalid_params
-    expect(response).not_to redirect_to pledges_url
+    post pledges_path, params: invalid_params
+    expect(response).not_to redirect_to pledges_path
   end
 end

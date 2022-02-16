@@ -4,7 +4,7 @@ RSpec.describe "Departments", type: :request do
 
 before do
   user = User.create!(email: "admin@admin.com", password: "password", user_type: "Admin")
-  post login_url, params: {email: user.email, password: user.password}
+  post login_path, params: {email: user.email, password: user.password}
 end
 
 let(:valid_params) do {
@@ -25,7 +25,7 @@ end
     let(:department){create(:department)}
 
     it "displays all departments created" do
-      get departments_url
+      get departments_path
       expect(response).to be_successful
     end
   end
@@ -34,7 +34,7 @@ end
     let(:department){create(:department)}
 
     it "renders a successful response" do
-      get edit_department_url(department)
+      get edit_department_path(department)
       expect(response).to be_successful
     end
   end
@@ -43,33 +43,33 @@ end
     let(:department){create(:department)}
 
     it "updates a department" do
-      patch department_url(department), params: valid_params
+      patch department_path(department), params: valid_params
       expect(response).to redirect_to departments_url
     end
     it "doesn't update a department" do
-      patch department_url(department), params: invalid_params
-      expect(response).not_to redirect_to departments_url
+      patch department_path(department), params: invalid_params
+      expect(response).not_to redirect_to departments_path
     end
   end
 
   describe "GET /new" do
     it "renders a successful response" do
-      get new_department_url
+      get new_department_path
       expect(response).to be_successful
     end
   end
 
   describe "POST /departments" do
     it "creates a new department" do
-      post departments_url, params: valid_params
+      post departments_path, params: valid_params
 
       result = Department.last
       expect(result.name).to eq('Media')
-      expect(response).to redirect_to departments_url
+      expect(response).to redirect_to departments_path
     end
     it "doesn't create a new department" do
-      post departments_url, params: invalid_params
-      expect(response).not_to redirect_to departments_url
+      post departments_path, params: invalid_params
+      expect(response).not_to redirect_to departments_path
     end
   end
 
@@ -77,8 +77,8 @@ end
     let(:department){create(:department)}
 
     it "deletes a department" do
-      delete department_url(department)
-      expect(response).to redirect_to departments_url
+      delete department_path(department)
+      expect(response).to redirect_to departments_path
     end
   end
 end

@@ -4,7 +4,7 @@ RSpec.describe "Dashboards", type: :request do
 
 before do
   user = User.create!(email: "admin@admin.com", password: "password", user_type: "Admin")
-  post login_url, params: {email: user.email, password: user.password}
+  post login_path, params: {email: user.email, password: user.password}
 end
 
   describe "GET /index" do

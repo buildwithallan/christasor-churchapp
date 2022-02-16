@@ -4,7 +4,7 @@ RSpec.describe "Memberships", type: :request do
 
 before do
   user = User.create!(email: "admin@admin.com", password: "password", user_type: "Admin")
-  post login_url, params: {email: user.email, password: user.password}
+  post login_path, params: {email: user.email, password: user.password}
 end
 
 let(:valid_params) do {
@@ -55,14 +55,14 @@ end
     let(:membership){create(:membership)}
 
     it "displays all members created" do
-      get memberships_url
+      get memberships_path
       expect(response).to be_successful
     end
   end
 
   describe "GET /new" do
     it "renders a successful response" do
-      get new_membership_url
+      get new_membership_path
       expect(response).to be_successful
     end
   end
@@ -71,7 +71,7 @@ end
     let(:membership){create(:membership)}
 
     it "renders a successful response" do
-      get membership_url(membership)
+      get membership_path(membership)
       expect(response).to be_successful
     end
   end
@@ -80,7 +80,7 @@ end
     let(:membership){create(:membership)}
 
     it "renders a successful response" do
-      get edit_membership_url(membership)
+      get edit_membership_path(membership)
       expect(response).to be_successful
     end
   end
@@ -89,26 +89,26 @@ end
     let(:membership){create(:membership)}
 
     it "updates a member" do
-      patch membership_url(membership), params: valid_params
+      patch membership_path(membership), params: valid_params
       expect(response).to redirect_to membership_url
     end
      it "doesn't update a member" do
-      patch membership_url(membership), params: invalid_params
-      expect(response).not_to redirect_to membership_url
+      patch membership_path(membership), params: invalid_params
+      expect(response).not_to redirect_to membership_path
     end
   end
 
   
   describe "POST /memberships" do
     it "creates a new member" do
-      post memberships_url, params: valid_params
+      post memberships_path, params: valid_params
       result = Membership.last
       expect(result.firstname).to eq('Allan')
-      expect(response).to redirect_to memberships_url
+      expect(response).to redirect_to memberships_path
     end
     it "doesn't create a new member" do
-      post memberships_url, params: invalid_params
-      expect(response).not_to redirect_to memberships_url
+      post memberships_path, params: invalid_params
+      expect(response).not_to redirect_to memberships_path
     end
   end
 
@@ -116,8 +116,8 @@ end
     let(:membership){create(:membership)}
 
     it "deletes a member" do    
-      delete membership_url(membership)
-      expect(response).to redirect_to memberships_url
+      delete membership_path(membership)
+      expect(response).to redirect_to memberships_path
     end
   end
 end

@@ -4,7 +4,7 @@ RSpec.describe "Offertories", type: :request do
 
 before do
   user = User.create!(email: "admin@admin.com", password: "password", user_type: "Admin")
-  post login_url, params: {email: user.email, password: user.password}
+  post login_path, params: {email: user.email, password: user.password}
 end
 
 let(:valid_params) do{
@@ -28,29 +28,29 @@ end
    let(:offertories){create(:offertories)}
 
     it "displays all offertories created" do
-      get offertories_url
+      get offertories_path
       expect(response).to be_successful
     end
   end
 
   describe "GET /new" do
     it "renders a successful response" do
-      get new_offertory_url
+      get new_offertory_path
       expect(response).to be_successful
     end
   end
 
   describe "POST /offertories" do
     it "creates a new offertory" do
-      post offertories_url, params: valid_params
+      post offertories_path, params: valid_params
 
       result = Offertory.first
       expect(result.amount).to eq(150)
-      expect(response).to redirect_to offertories_url
+      expect(response).to redirect_to offertories_path
     end
     it "doesn't create a new offertory" do
-      post offertories_url, params: invalid_params
-      expect(response).not_to redirect_to offertories_url
+      post offertories_path, params: invalid_params
+      expect(response).not_to redirect_to offertories_path
     end
   end
 

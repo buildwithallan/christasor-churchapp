@@ -8,6 +8,6 @@ RSpec.describe Department, type: :model do
  end
 
  describe "association" do
- 	it {is_expected.to have_many(:department_members)}
+ 	it {is_expected.to have_many(:department_members).dependent(:destroy)}
  end
 end

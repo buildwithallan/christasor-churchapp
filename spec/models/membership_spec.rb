@@ -11,6 +11,6 @@ RSpec.describe Membership, type: :model do
   end
 
   describe "associations" do
-  	it {is_expected.to have_many(:tithes)}
+  	it {is_expected.to have_many(:tithes).dependent(:destroy)}
   end
 end
