@@ -8,6 +8,5 @@
 
 User.create([
 	{email: 'superadmin@admin.com', password: 'superadmin1234', user_type: 'superadmin'},
-	{email: 'admin@admin.com', password: 'admin1234', user_type: 'admin'},
-	{email: 'admin1@admin.com', password: 'admin1234', user_type: 'admin'}
+	{email: 'admin@admin.com', password: 'admin1234', user_type: 'admin'}
 ])
